@@ -8,9 +8,11 @@ export default function FormBox() {
   const { Configuration, OpenAIApi } = require("openai");
 
   const configuration = new Configuration({
-    apiKey: "[]",
+    apiKey: process.env.REACT_APP_GPT3_KEY,
   });
   const openai = new OpenAIApi(configuration);
+
+  console.log(process.env);
 
   // Sets up a listener that returns GPT3's response to a user's inputted text
   useEffect(() => {
