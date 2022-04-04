@@ -1,7 +1,7 @@
 import { Form, FormGroup, Label, Input, Card, CardBody } from "reactstrap";
 import React, { useEffect, useState } from "react";
 
-export function FormBox() {
+export default function FormBox() {
   const [output, setOutput] = useState("");
   const [input, setInput] = useState("");
 
