@@ -11,10 +11,11 @@ export function makeJobProps(title: string, career: string, salary: string) {
 export function JobListing() {
 
     var jobProps: string[][] = []
-    for (var i = 0; i < 5; i++) {
-        jobProps.push(makeJobProps("Title " + (i+1), "Career Sentiment " + (i+1), "Salary " + (i+1)));
-    }
-
+    jobProps.push(makeJobProps("Web development", "Career Sentiment: <>", "Average Salary: $<> - $<>"));
+    jobProps.push(makeJobProps("Software engineering", "Career Sentiment: <>", "Average Salary: $<> - $<>"));
+    jobProps.push(makeJobProps("Database administration", "Career Sentiment: <>", "Average Salary: $<> - $<>"));
+    jobProps.push(makeJobProps("Information security", "Career Sentiment: <>", "Average Salary: $<> - $<>"));
+    jobProps.push(makeJobProps("Network architecture", "Career Sentiment: <>", "Average Salary: $<> - $<>"));
     return (
         <>
             <Card style={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
