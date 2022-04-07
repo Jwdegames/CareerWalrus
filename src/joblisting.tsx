@@ -1,6 +1,8 @@
 import { Form, FormGroup, Label, Input, Card, CardBody, Table } from "reactstrap";
 import { JobListingButton } from "./JobListingButton";
+import { useState } from "react";
 import "./JobListing.css";
+import jsonJobs from "./JobCategories.json";
 
 // Makes A Job Listing Button given title, career, and salary
 
@@ -9,11 +11,6 @@ export function makeJobProps(title: string, career: string, salary: string) {
 }
 
 export function JobListing() {
-
-    var jobProps: string[][] = []
-    for (var i = 0; i < 5; i++) {
-        jobProps.push(makeJobProps("Title " + (i+1), "Career Sentiment " + (i+1), "Salary " + (i+1)));
-    }
 
     return (
         <>
@@ -28,14 +25,14 @@ export function JobListing() {
                 </Form>
                 <p> Test </p>
                 <Table>
-                    {jobProps.map((jobProp)=>{
+                    {jsonJobs.map((item) => {
                     return ( 
                         <tr>
                             <th>
                                 <JobListingButton 
-                                    title = {jobProp[0]}
-                                    career= {jobProp[1]}
-                                    salary = {jobProp[2]}/>
+                                    title = {item.career}
+                                    career= {item.description}
+                                    salary = {item.salary}/>
                             </th>
                         </tr>
                     );

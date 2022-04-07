@@ -1,0 +1,33 @@
+[{
+    "career": "Software Developer",
+    "description": "Create software for devices",
+    "salary": "TBD" 
+}, {
+    "career": "Web Developer",
+    "description": "Create websites on the internet",
+    "salary": "TBD"
+}, {
+    "career": "Security Analyst",
+    "description": "Keep networks safe from cyber-threats",
+    "salary": "TBD"
+}, {
+    "career": "Data Scientist",
+    "description": "Analyze large amounts of data to solve certain problems",
+    "salary": "TBD"
+}, {
+    "career": "AI/Machine Learning Engineer",
+    "description": "Research, build, and design AI systems",
+    "salary": "TBD"
+}, {
+    "career": "Video Game Developer",
+    "description": "Design aspects of videogames such as the graphics or the engine that games run on",
+    "salary": "TBD"
+}, {
+    "career": "Database Administrator",
+    "description": "Manage clients/users data",
+    "salary": "TBD"
+}, {
+    "career": "Computer Network Architect",
+    "description": "Design the networks that keep people connected",
+    "salary": "TBD"
+}]
