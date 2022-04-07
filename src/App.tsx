@@ -3,7 +3,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import {MyNavbar} from"./navbar";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { lazy, Suspense } from "react";
-import {JobListing} from "./JobListing/joblisting";
+import {JobListing} from "./joblisting";
 const FormBox = lazy(() => import("./FormBox"));
 
 
