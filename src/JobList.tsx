@@ -27,7 +27,7 @@ export function JobList(props: any) {
                     </th>
                 </tr>
             );
-        })};
+        })}
         </Table> 
     );
 }
