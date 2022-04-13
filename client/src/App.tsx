@@ -6,9 +6,7 @@ import { lazy, Suspense } from "react";
 import {JobListing} from "./joblisting";
 const FormBox = lazy(() => import("./FormBox"));
 
-
 function App() {
-  
   return <>
     <MyNavbar/> 
     <Router>
