@@ -2,6 +2,7 @@ const CareerModel = require("../models/CareerModel.ts");
 const express = require('Express');
 const router = express.Router();
 
+// See all careers storted on the MongoDB Database
 router.get('/getStoredCareers', (req : any, res : any) => {
     CareerModel.find({}, (err : any, result : any) => {
         if (err) {
@@ -12,6 +13,7 @@ router.get('/getStoredCareers', (req : any, res : any) => {
     });
  });
 
+ // Store a career option on the MongoDB Database
  router.post('/createStoredCareer', async (req : any, res : any) => {
     const career = req.body;
     const newCareer = new CareerModel(career);

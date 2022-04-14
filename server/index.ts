@@ -14,7 +14,7 @@ mongoose.connect("mongodb+srv://Amariwest19:123@cluster0.enwzq.mongodb.net/Walru
 app.use(express.json());
 
 // Server Output
-app.listen(3002, () => {
+app.listen(3501, () => {
     console.log("Server Running");
 });
 
@@ -24,6 +24,9 @@ app.use("/test", test);
 
 const getStoredCareers = require("./routes/Careers.ts");
 app.use("/careers", getStoredCareers);
+
+const gptRequests = require("./routes/GPT.ts");
+app.use("/gpt", gptRequests);
 
 export {}
 
