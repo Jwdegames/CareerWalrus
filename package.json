@@ -13,6 +13,6 @@
   },
   "scripts": {
     "start": "nodemon server/index.ts",
-    "build": "cd client && yarn install && yarn start"
+    "build": "cd client && yarn install && yarn run build"
   }
 }
