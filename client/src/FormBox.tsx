@@ -12,7 +12,7 @@ export default function FormBox() {
 
     if (input) {
       let debouncer = setTimeout(() => {
-        Axios.post("http://localhost:3501/gpt/sendGPTPrompt", {
+        Axios.post("http://localhost:80/gpt/sendGPTPrompt", {
           prompt: inputprompt + input + "/n",
           temperature: 0.1,
           max_tokens: 256,
