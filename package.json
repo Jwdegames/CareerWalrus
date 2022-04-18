@@ -12,7 +12,7 @@
     "ts-node": "^10.7.0"
   },
   "scripts": {
-    "start": "nodemon server/index.ts",
+    "start": "nodemon index.ts",
     "build": "cd client && yarn install && yarn run build"
   }
 }
