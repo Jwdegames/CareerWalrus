@@ -1,7 +1,7 @@
 // Init Express App
 const express = require("express");
 const app = express();
-import mongoose from "mongoose";
+const mongoose = express("mongoose");
 import path from "path";
 
 // Allow communication with React Application
