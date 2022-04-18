@@ -23,6 +23,9 @@ export function MyNavbar() {
                 Question and Answer
               </NavLink>
             </NavItem>
+            <NavItem>
+              <div id="google_translate_element"></div>
+            </NavItem>
           </Nav>
         </Collapse>
       </Navbar>
