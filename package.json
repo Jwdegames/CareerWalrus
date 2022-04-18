@@ -17,6 +17,6 @@
     "dev" : "concurrently --kill-others-on-fail \"yarn server\" \"yarn client\"",
     "dev:server": "cd client && yarn build && cd .. && cd server && yarn start",
     "start": "cd server && nodemon index.ts",
-    "heroku-postbuild": "cd client && yarn install && yarn run start"
+    "heroku-postbuild": "cd client && yarn install && yarn build"
   }
 }
