@@ -3,8 +3,16 @@ import { Table } from 'reactstrap';
 import jsonJobs from "./JobCategories.json"
 import { JobListingButton } from './JobListingButton';
 
+
+interface JobItem{
+    career: string,
+    description: string,
+    salary: string
+}
+
+
 export function JobList(props: any) {
-    const filteredJobs = jsonJobs.filter((el: any) => {
+    const filteredJobs = jsonJobs.filter((el: JobItem) => {
         // if no input return all job categories
         if (props.input === '') {
             return el;
@@ -16,9 +24,10 @@ export function JobList(props: any) {
     })
     return (
         <Table>
+        <tbody>
         {filteredJobs.map((item) => {
             return ( 
-                <tr>
+                <tr key={item.career}>
                     <th>
                         <JobListingButton 
                             title = {item.career}
@@ -28,6 +37,7 @@ export function JobList(props: any) {
                 </tr>
             );
         })}
+        </tbody>
         </Table> 
     );
 }
