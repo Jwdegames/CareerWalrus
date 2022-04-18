@@ -16,7 +16,7 @@ app.use(cors());
 app.use(express.json());
 
 // Have Node serve the files for our built React app
-app.use(express.static(path.resolve(__dirname, '../client/public')));
+app.use(express.static(path.resolve(__dirname, '../client/build')));
 
 
 // Routes
@@ -32,7 +32,7 @@ app.use("/gpt", gptRequests);
 
 // All other GET requests not handled before will return our React app
 app.get('*', (req: any, res: any) => {
-    res.sendFile(path.join(__dirname + "../client/public/index.html"));
+    res.sendFile(path.join(__dirname + "../client/build/index.html"));
 });
 
 // Server Output
