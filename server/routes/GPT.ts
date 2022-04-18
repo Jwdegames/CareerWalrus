@@ -1,5 +1,5 @@
 const { Configuration, OpenAIApi } = require("openai");
-const express = require('Express');
+const express = require('express');
 const router = express.Router();
 
 const configuration = new Configuration({

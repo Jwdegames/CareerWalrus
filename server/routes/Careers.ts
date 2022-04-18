@@ -1,5 +1,5 @@
 const CareerModel = require("../models/CareerModel.ts");
-const express = require('Express');
+const express = require('express');
 const router = express.Router();
 
 // See all careers storted on the MongoDB Database
