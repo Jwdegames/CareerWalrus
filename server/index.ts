@@ -18,7 +18,7 @@ mongoose.connect(
     }
 )
 .then(() => console.log("MongoDB has connected."))
-.catch((err) => console.log(err));
+.catch((err : any) => console.log(err));
 
 
 // Allows requests that have a body.
