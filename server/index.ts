@@ -10,7 +10,16 @@ app.use(cors());
 
 // Database Connect
 // Needs to be reconfigured to whitelist ips
-//mongoose.connect("mongodb+srv://Amariwest19:123@cluster0.enwzq.mongodb.net/WalrusDatabase?retryWrites=true&w=majority");
+mongoose.connect(
+    "mongodb+srv://Amariwest19:123@cluster0.enwzq.mongodb.net/WalrusDatabase?retryWrites=true&w=majority",
+    {
+        useNewUrlParser: true,
+        useUnifiedTopology: true,
+    }
+)
+.then(() => console.log("MongoDB has connected."))
+.catch((err) => console.log(err));
+
 
 // Allows requests that have a body.
 app.use(express.json());
