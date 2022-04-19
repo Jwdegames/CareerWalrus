@@ -4,6 +4,7 @@ import { useState } from "react";
 import "./JobListing.css";
 import jsonJobs from "./JobCategories.json";
 import { JobList } from "./JobList";
+const axios = require('axios').default;
 
 // Makes A Job Listing Button given title, career, and salary
 
@@ -17,6 +18,23 @@ export function JobListing() {
         var lowerCase = e.target.value.toLowerCase();
         setInputText(lowerCase);
     }
+
+    axios.post("/oneStop/getJobs", {
+        keyword: "Software Developers",
+        location: "United States",
+        radius: "25",
+        sortColumns: "0",
+        sortOrder: "0",
+        startRecord: "0",
+        pageSize: "100",
+        days: "30"
+    })
+    .then(() => {
+        console.log("Finished post to index");
+    })
+    .catch((err: any) => {
+        console.log(err);
+    })
 
     return (
         <>
