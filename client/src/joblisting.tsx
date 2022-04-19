@@ -18,6 +18,7 @@ export function JobListing() {
         setInputText(lowerCase);
     }
 
+    
     return (
         <>
             <Card style={{ display: "flex", justifyContent: "center", alignItems: "center" }}>

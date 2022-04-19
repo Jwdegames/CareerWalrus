@@ -16,8 +16,10 @@ export function MyNavbar() {
         <Collapse navbar>
           <Nav className="ml-auto" navbar>
             <NavItem>
-              <NavLink href="/jobs">Job Listing</NavLink>
-            </NavItem>
+              <NavLink href="/jobs">
+                Job Listing
+                </NavLink>
+              </NavItem>
             <NavItem>
               <NavLink href="/question-and-answer">
                 Question and Answer
