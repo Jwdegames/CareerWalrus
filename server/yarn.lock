@@ -1369,6 +1369,11 @@ update-notifier@^5.1.0:
     semver-diff "^3.1.1"
     xdg-basedir "^4.0.0"
 
+uribuilder@^1.0.5:
+  version "1.0.5"
+  resolved "https://registry.yarnpkg.com/uribuilder/-/uribuilder-1.0.5.tgz#d3eca2621863a37f4555b170246b88903e3d2efd"
+  integrity sha512-t+vhTq+igE/wuSdeThOQCcHiPVs+RBkC+6BC8cBe1oiI0B5QCMVOEXixythb9RVX/CxkedVnJyGdYIAMklyAkg==
+
 url-parse-lax@^3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/url-parse-lax/-/url-parse-lax-3.0.0.tgz#16b5cafc07dbe3676c1b1999177823d6503acb0c"
