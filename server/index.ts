@@ -10,7 +10,16 @@ app.use(cors());
 
 // Database Connect
 // Needs to be reconfigured to whitelist ips
-//mongoose.connect("mongodb+srv://Amariwest19:123@cluster0.enwzq.mongodb.net/WalrusDatabase?retryWrites=true&w=majority");
+mongoose.connect(
+    "mongodb+srv://Amariwest19:123@cluster0.enwzq.mongodb.net/WalrusDatabase?retryWrites=true&w=majority",
+    {
+        useNewUrlParser: true,
+        useUnifiedTopology: true,
+    }
+)
+.then(() => console.log("MongoDB has connected."))
+.catch((err : any) => console.log(err));
+
 
 // Allows requests that have a body.
 app.use(express.json());
@@ -29,6 +38,8 @@ app.use("/careers", getStoredCareers);
 const gptRequests = require("./routes/GPT.ts");
 app.use("/gpt", gptRequests);
 
+const oneStopRequests = require("./routes/OneStop.ts");
+app.use("/oneStop", oneStopRequests);
 
 // All other GET requests not handled before will return our React app
 app.get('*', (req: any, res: any) => {
@@ -36,8 +47,9 @@ app.get('*', (req: any, res: any) => {
 });
 
 // Server Output
-app.listen(process.env.PORT || 80, () => {
-    console.log("Server Running");
+const port = process.env.PORT || 1234;
+app.listen(process.env.PORT || 1234, () => {
+    console.log(`Server running on port ${port}`);
 });
 
 export {}
