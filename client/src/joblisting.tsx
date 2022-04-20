@@ -19,22 +19,22 @@ export function JobListing() {
         setInputText(lowerCase);
     }
 
-    Axios.post("/oneStop/getJobs", {
-        keyword: "Software Developers",
-        location: "United States",
-        radius: "25",
-        sortColumns: "0",
-        sortOrder: "0",
-        startRecord: "0",
-        pageSize: "100",
-        days: "30"
-    })
-    .then((response) => {
-        console.log(response.data);
-    })
-    .catch((err: any) => {
-        console.log(err);
-    })
+    // Axios.post("/oneStop/getJobs", {
+    //     keyword: "Software Developers",
+    //     location: "United States",
+    //     radius: "25",
+    //     sortColumns: "0",
+    //     sortOrder: "0",
+    //     startRecord: "0",
+    //     pageSize: "100",
+    //     days: "30"
+    // })
+    // .then((response) => {
+    //     console.log(response.data);
+    // })
+    // .catch((err: any) => {
+    //     console.log(err);
+    // })
 
     return (
         <>
