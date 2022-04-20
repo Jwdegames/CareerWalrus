@@ -19,6 +19,7 @@ export function JobListing() {
         setInputText(lowerCase);
     }
 
+
     Axios.post("/oneStop/getJobs", {
         keyword: "Software Developers",
         location: "United States",
