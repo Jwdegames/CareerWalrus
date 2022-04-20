@@ -1,0 +1,27 @@
+Container {
+    border: 1px solid black;
+}
+
+.container {
+    border: 1px solid black;
+}
+
+Row {
+    border: 1px solid black;
+}
+
+.row {
+    border: 1px solid black;
+}
+
+Col {
+    border: 1px solid black;
+}
+
+.col {
+    border: 1px solid black;
+}
+
+button {
+    width: 100%;
+}

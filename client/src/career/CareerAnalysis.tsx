@@ -1,6 +1,9 @@
 import { useState } from "react";
 import { useLocation } from "react-router-dom";
-import { Container, Row, Col} from 'reactstrap'
+import { Button, Container, Row, Col} from 'reactstrap'
+import { CABList } from "./CABList";
+import "./CareerAnalysis.css"
+import "./CABList"
 /**
  * Makes the career analysis page. Has two states: company listings and job listings
  */
@@ -33,8 +36,12 @@ export function CareerAnalysis() {
         </p>
         <Container>
             <Row>
-                <Col sm={4}>Test</Col>
-                <Col sm={8}>Test</Col>
+                <Col className = "col" sm={4}>
+                    Test
+                    <CABList></CABList>
+                </Col>
+                
+                <Col className = "col" sm={8}>Test</Col>
             </Row>
         </Container>
     </>);
