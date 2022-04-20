@@ -23,6 +23,7 @@ router.post("/getJobs", async (req : any, res : any) => {
         .then((response: any) => {
             console.log(`Status Code: ${response.status}`);
             console.log(response);
+            res.send(response)
         })
         .catch((error: any) => {
             console.log(error);
