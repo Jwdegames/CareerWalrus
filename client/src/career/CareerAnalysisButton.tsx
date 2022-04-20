@@ -10,9 +10,9 @@ export function CareerAnalysisButton({title, company, salary, location} :
     return (
         <>
                 <button >
-                <h1>
+                <h3>
                     {title}
-                </h1>
+                </h3>
                 <p>
                     {company}
                 </p>
