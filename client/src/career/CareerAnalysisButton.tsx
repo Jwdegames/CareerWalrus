@@ -1,12 +1,11 @@
 import PropTypes, { InferProps } from "prop-types";
-
+import { JobButtonInterface } from "./CABProps"
 /**
  * Button to fill the career analysis field
  * 
  * @returns A button that fills in the career analysis field.
  */
-export function CareerAnalysisButton({title, company, salary, location} : 
-    InferProps<typeof CareerAnalysisButton.propTypes>) {
+export function CareerAnalysisButton({title, company, salary, location} : JobButtonInterface) {
     return (
         <>
                 <button >
@@ -26,10 +25,3 @@ export function CareerAnalysisButton({title, company, salary, location} :
         </>
     );
 }
-
-CareerAnalysisButton.propTypes = {
-    title: "",
-    company: "",
-    salary: "",
-    location: ""
-};
