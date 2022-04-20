@@ -38,6 +38,8 @@ app.use("/careers", getStoredCareers);
 const gptRequests = require("./routes/GPT.ts");
 app.use("/gpt", gptRequests);
 
+const oneStopRequests = require("./routes/OneStop.ts");
+app.use("/oneStop", oneStopRequests);
 
 // All other GET requests not handled before will return our React app
 app.get('*', (req: any, res: any) => {
@@ -45,8 +47,9 @@ app.get('*', (req: any, res: any) => {
 });
 
 // Server Output
-app.listen(process.env.PORT || 80, () => {
-    console.log("Server Running");
+const port = process.env.PORT || 1234;
+app.listen(process.env.PORT || 1234, () => {
+    console.log(`Server running on port ${port}`);
 });
 
 export {}

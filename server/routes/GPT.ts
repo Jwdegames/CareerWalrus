@@ -19,9 +19,6 @@ router.post('/sendGPTPrompt', async (req : any, res : any) => {
     } else {
         console.log("Empty List");
     }
-    
-
-    
 });
 
 // Export router to use in index.js
