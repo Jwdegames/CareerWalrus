@@ -8,8 +8,6 @@ Queries the list job function in Career OneStop's API
 */
 router.post("/getJobs", async (req : any, res : any) => {
     if (req) {
-        console.log(req.body);
-
         const userId = "aTSpInK9SOGclcJ";
         const apiKey = "js9Ba1M/SNhb3mYbWwObvai+5SB+F6lEN+OHNu6va2Y5RHtev/RIwww0kvQC6QhaioDB/N5BBKclBfDNO1qRgw==";
 
@@ -21,9 +19,7 @@ router.post("/getJobs", async (req : any, res : any) => {
         console.log(uri.toString());
         axios.get(uri.toString(), { headers: { "Authorization": `Bearer ${apiKey}` } })
         .then((response: any) => {
-            console.log(`Status Code: ${response.status}`);
-            console.log(response.status);
-            console.log(response.data);
+            console.log(`api.careeronestop.org Status Code: ${response.status}`);
             res.send(response.data);
         })
         .catch((error: any) => {
