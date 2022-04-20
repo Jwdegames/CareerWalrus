@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useLocation } from "react-router-dom";
+import { Container, Row, Col} from 'reactstrap'
 /**
  * Makes the career analysis page. Has two states: company listings and job listings
  */
@@ -8,14 +9,34 @@ export function CareerAnalysis() {
     const [listingState, setListingState] = useState("");
     // List selection
     const [listingSelection, setListingSelection] = useState("");
-
-    const {state} = useLocation();
-    setListingState(state[listingState]);
+    // Initialized
+    const [initialized, setInit] = useState("");
+    const state = useLocation();
+    // Sets the input of listing state from 
+    let setLSInput = () => {
+        const stateProps = state.state as any;
+        console.log(stateProps);
+        var ls_input = stateProps["listingState"] as any;
+        console.log("Input is " + ls_input);
+        setListingState(ls_input);
+        setInit("True");
+    }
+    // Below code should only be run once to prevent issues.
+    if (initialized == "") {
+        setLSInput();
+    }
+    //setListingState(state[listingState]);
     return (
     <>
         <p>
-            We are currently showing {listingState}
+            We are currently showing {listingState} listings.
         </p>
+        <Container>
+            <Row>
+                <Col sm={4}>Test</Col>
+                <Col sm={8}>Test</Col>
+            </Row>
+        </Container>
     </>);
 
 
