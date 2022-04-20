@@ -5,10 +5,16 @@ import { JobButtonInterface } from "./CABProps"
  * 
  * @returns A button that fills in the career analysis field.
  */
-export function CareerAnalysisButton({title, company, salary, location} : JobButtonInterface) {
+export function CareerAnalysisButton({title, company, description, salary, location, updateFunc} : JobButtonInterface) {
+
+    // Shows a description of the job
+    function showDesc() {
+        updateFunc(description);
+    }
+
     return (
         <>
-                <button >
+            <button onClick = {showDesc}>
                 <h3>
                     {title}
                 </h3>

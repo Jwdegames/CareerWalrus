@@ -6,7 +6,7 @@ import {JobItem} from "./CABProps";
  * @returns List of Career Analysis Buttons
  * 
  */
-export function CABList() {
+export function CABList(props: any) {
 
     var buttonsList: JobItem[] = [];
     /**
@@ -28,16 +28,16 @@ export function CABList() {
         <>
             {
                 buttonsList.map((btn) => {
+                    var key: string = btn.title + " at " + btn.company + " in " + btn.description;
                     return (
-                        <>
-                            <CareerAnalysisButton
+                            <CareerAnalysisButton key = {key}
                                 title = {btn.title}
                                 company = {btn.company}
+                                description = {btn.description}
                                 salary = {btn.salary}
                                 location = {btn.location}
-                            
+                                updateFunc = {props.input as Function}
                             />
-                        </>
 
                     );
                 })

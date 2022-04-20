@@ -1,5 +1,5 @@
 /**
- * Interface for the CABs
+ * Interface for the CABs and description of the CAB
  */
  export interface JobItemInterface{
     title: string,
@@ -9,11 +9,17 @@
     location: string
 }
 
+/**
+ * Interface for the CABs only
+ */
 export interface JobButtonInterface{
     title: string,
     company: string,
-    salary: string
-    location: string
+    description: string,
+    salary: string,
+    location: string,
+    updateFunc: Function;
+    
 }
 
 /**
