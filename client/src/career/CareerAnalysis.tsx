@@ -24,7 +24,7 @@ export function CareerAnalysis() {
         setListingState(ls_input);
         setInit("True");
     }
-    console.log("Listing selection is " + listingSelection);
+    //console.log("Listing selection is " + listingSelection);
     // Below code should only be run once to prevent issues.
     if (initialized == "") {
         setLSInput();
@@ -33,13 +33,13 @@ export function CareerAnalysis() {
     return (
     <>
         <p>
-            We are currently showing {listingState} listings.
+            We are currently showing job listings for {listingState}.
         </p>
         <Container>
             <Row>
                 <Col className = "col" sm={4}>
                     Test
-                    <CABList input = {setListingSelection}></CABList>
+                    <CABList input = {setListingSelection} input2 = {listingState}></CABList>
                 </Col>
                 
                 <Col className = "col" sm={8}>{listingSelection}</Col>

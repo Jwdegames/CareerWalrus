@@ -16,7 +16,7 @@ router.post("/getJobs", async (req : any, res : any) => {
         uri.host = "api.careeronestop.org";
         uri.setPath(`/v1/jobsearch/${userId}/${req.body.keyword}/${req.body.location}/${req.body.radius}/${req.body.sortColumns}/${req.body.sortOrder}/${req.body.startRecord}/${req.body.pageSize}/${req.body.days}`);
         
-        console.log(uri.toString());
+        // console.log(uri.toString());
         axios.get(uri.toString(), { headers: { "Authorization": `Bearer ${apiKey}` } })
         .then((response: any) => {
             console.log(`api.careeronestop.org Status Code: ${response.status}`);

@@ -1,33 +1,17 @@
 [{
-    "career": "Software Developer",
+    "career": "Software Developers",
     "description": "Create software for devices",
     "salary": "TBD" 
 }, {
-    "career": "Web Developer",
+    "career": "Web Developers",
     "description": "Create websites on the internet",
     "salary": "TBD"
 }, {
-    "career": "Security Analyst",
-    "description": "Keep networks safe from cyber-threats",
+    "career": "Computer Systems Analysts",
+    "description": "Test, maintain, and monitor computer programs and systems, including coordinating the installation of computer programs and systems",
     "salary": "TBD"
 }, {
-    "career": "Data Scientist",
+    "career": "Data Scientists",
     "description": "Analyze large amounts of data to solve certain problems",
-    "salary": "TBD"
-}, {
-    "career": "AI/Machine Learning Engineer",
-    "description": "Research, build, and design AI systems",
-    "salary": "TBD"
-}, {
-    "career": "Video Game Developer",
-    "description": "Design aspects of videogames such as the graphics or the engine that games run on",
-    "salary": "TBD"
-}, {
-    "career": "Database Administrator",
-    "description": "Manage clients/users data",
-    "salary": "TBD"
-}, {
-    "career": "Computer Network Architect",
-    "description": "Design the networks that keep people connected",
     "salary": "TBD"
 }]

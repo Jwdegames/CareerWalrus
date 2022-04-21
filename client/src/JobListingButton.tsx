@@ -14,7 +14,7 @@ export function JobListingButton({title, career, salary} :
          */
         function loadCareerAnalysis(e: React.MouseEvent) {
             // Go to career analysis page
-            navigator("../careers", {state: { listingState: "Job" }});
+            navigator("../careers", {state: { listingState: title }});
         }
     return (
         <>
