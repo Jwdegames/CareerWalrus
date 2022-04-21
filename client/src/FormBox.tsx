@@ -50,7 +50,7 @@ export default function FormBox() {
         </CardBody>
       </Card>
       <p> {output} </p>
-      <QuestionPresets setInput={setInput} />
+      <QuestionPresets setInput={setInput} output={output} />
     </div>
   );
 }
