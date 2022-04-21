@@ -47,8 +47,8 @@ app.get('*', (req: any, res: any) => {
 });
 
 // Server Output
-const port = process.env.PORT || 1234;
-app.listen(process.env.PORT || 1234, () => {
+const port = process.env.PORT || 80;
+app.listen(process.env.PORT || 80, () => {
     console.log(`Server running on port ${port}`);
 });
 
