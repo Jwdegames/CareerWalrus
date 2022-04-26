@@ -44,7 +44,7 @@ export default function FormBox() {
             <FormGroup>
               <Label for="gpt-input">Give a basic description of your interests to get career options or ask a question. Try to be specific... </Label>
               <br />
-              <Input id="gpt-input" type="textarea" onChange={handleChange}></Input>
+              <Input id="gpt-input" type="textarea" value={input} onChange={handleChange}></Input>
             </FormGroup>
           </Form>
         </CardBody>
