@@ -2,6 +2,11 @@ import { useEffect, useState } from "react";
 import { Table } from "reactstrap";
 import Axios from "axios";
 
+interface PresetProps {
+  setInput: React.Dispatch<React.SetStateAction<string>>;
+  output: string;
+}
+
 const preset_questions: string[] = [
   "How do I choose a career?",
   "What's the typical career path in engineering?",
@@ -12,7 +17,7 @@ const preset_questions: string[] = [
   "What if some day I decide I want to do something else?",
 ];
 
-export function QuestionPresets({ setInput, output }: { setInput: React.Dispatch<React.SetStateAction<string>>; output: string }) {
+export function QuestionPresets({ setInput, output }: PresetProps) {
   // 1) Reacts to GPT3's own responses to generate follow up questions. Does not create an infinite loop because useEffect does not change any other useState variables
   const [followUpQuestion, setFollowUp] = useState("");
 
@@ -28,9 +33,8 @@ export function QuestionPresets({ setInput, output }: { setInput: React.Dispatch
           frequency_penalty: 0,
           presence_penalty: 0,
         }).then((response) => {
-          setFollowUp(response.data);
+          setFollowUp(response.data.trim());
         });
-        console.log(output);
       }, 1000);
       return () => {
         clearTimeout(debouncer);
@@ -39,10 +43,9 @@ export function QuestionPresets({ setInput, output }: { setInput: React.Dispatch
   }, [output]);
 
   // 2) Shorthand functions to breakdown tasks to make coding more composed
-  const callGPT3 = (question: string) => setInput(question); // handles calling GPT3 when button clicked
 
   // A shorthand component to build buttons that call GPT3 with questions
-  const renderButton = (question: string) => <button onClick={() => callGPT3(question)}>{question}</button>; // lambda can be optimized for performance with useCallback to prevent rerender
+  const renderButton = (question: string) => <button onClick={() => setInput(question)}>{question}</button>; // lambda can be optimized for performance with useCallback to prevent rerender
 
   //  3) The list of questions, with followup appearing at top based on if output == '' or not
   return (
