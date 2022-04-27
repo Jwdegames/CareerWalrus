@@ -36,16 +36,12 @@ export function CABList(props: any) {
         
         // Fetch the Cost of living
         Axios.post("/bls/sendBLSRequest", {
-            keyword: props.input2,
-            location: "United States",
-            radius: 25,
-            sortColumns: 0,
-            sortOrder: 0,
-            startRecord: 0,
-            pageSize: 10,
-            days: 30})
+            seriesid: 'CUURS49BSA0',
+            startyear: '2008',
+            endyear: '2022',})
         .then((response) => {
-            setCostOfLiving(Object.values(response));
+            console.log(response);
+            setCostOfLiving(Object.values(response.data.Results.series[0].data));
         })
         .catch((err: any) => {
             console.log(err);
@@ -67,7 +63,7 @@ export function CABList(props: any) {
                     
                     let actualLocation: string =  (btn.Location ? btn.Location  : "No location provided for job posting");
                     
-                    let display: string = btn.JobTitle + " at " + btn.Company + " in " + actualLocation + "\n Cost of Living: \n" + JSON.stringify(costOfLiving, null , 2);
+                    let display: string = btn.JobTitle + " at " + btn.Company + " in " + actualLocation;
                     let key: number = index;
                     index += 1;
                     
@@ -76,6 +72,7 @@ export function CABList(props: any) {
                                 title = {btn.JobTitle}
                                 company = {btn.Company}
                                 description = {display}
+                                cpiData = {costOfLiving}
                                 salary = "TBD"
                                 location = { actualLocation}
                                 updateFunc = {props.input as Function}

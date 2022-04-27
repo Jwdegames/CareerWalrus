@@ -8,19 +8,19 @@ const API_KEY = 'd2284943d7d643e5b4196be0f8086f59';
 
 let bls = new Bls2(API_KEY);
 
-let options = {
-    'seriesid': ['CUURS49BSA0'],
-    'startyear': '2008',  
-    'endyear': '2018'
-    // ...
-
-};
 
 // Send a general BLS Request
 router.post('/sendBLSRequest', async (req : any, res : any) => {
     if (req) {
         //const response = await openai.createCompletion("text-davinci-002", req.body);
         console.log(req.body);
+        let options = {
+            'seriesid': [req.body.seriesid],
+            'startyear': req.body.startyear,  
+            'endyear': req.body.endyear
+            // ...
+        
+        };
         bls.fetch(options).then(function (response: any) {
             console.log(JSON.stringify(response));
             res.send(response);
