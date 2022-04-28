@@ -11,7 +11,7 @@ export function CareerAnalysis() {
     // Handles listing state
     const [listingState, setListingState] = useState("");
     // List selection
-    const [listingSelection, setListingSelection] = useState("");
+    const [listingSelection, setListingSelection]: [any, any] = useState([]);
     // Initialized
     const [initialized, setInit] = useState("");
     const state = useLocation();
