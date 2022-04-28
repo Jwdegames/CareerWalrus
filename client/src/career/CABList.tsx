@@ -28,7 +28,7 @@ export function CABList(props: any) {
             // console.log(typeof(response.data.Jobs));
             setJobListState(Object.values(response.data.Jobs));
             // console.log("Our job list state is a " + typeof(Object.values(jobListState)));
-            // console.log("The object is " + Object.values(jobListState));
+            // console.log(response.data);
         })
         .catch((err: any) => {
             console.log(err);
