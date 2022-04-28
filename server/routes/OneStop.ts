@@ -33,7 +33,7 @@ router.post("/getJobs", async (req : any, res : any) => {
 /*
 Queries the get salary function in Career OneStop's API. Returns a JSON object
 */
-router.post("/getJobs", async (req : any, res : any) => {
+router.post("/getSalary", async (req : any, res : any) => {
     if (req) {
         const userId = "aTSpInK9SOGclcJ";
         const apiKey = "js9Ba1M/SNhb3mYbWwObvai+5SB+F6lEN+OHNu6va2Y5RHtev/RIwww0kvQC6QhaioDB/N5BBKclBfDNO1qRgw==";
@@ -46,14 +46,14 @@ router.post("/getJobs", async (req : any, res : any) => {
         axios.get(uri.toString(), { headers: { "Authorization": `Bearer ${apiKey}` } })
         .then((response: any) => {
             console.log(`api.careeronestop.org Status Code: ${response.status}`);
-            console.log(response)
+            console.log(response.data)
             res.send(response.data);
         })
         .catch((error: any) => {
             console.log(error.response.data);
         })
     } else {
-        console.log("Empty request body for getJobs");
+        console.log("Empty request body for getSalary");
     }
 });
 

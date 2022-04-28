@@ -4,15 +4,16 @@ import jsonJobs from "./JobCategories.json"
 import { JobListingButton } from './JobListingButton';
 
 
-interface JobItem{
+interface JobItem {
     career: string,
     description: string,
     salary: string
 }
 
-
 export function JobList(props: any) {
-    const filteredJobs = jsonJobs.filter((el: JobItem) => {
+    // const [salary, setSalary] = useState("")
+
+    var filteredJobs = jsonJobs.filter((el: JobItem) => {
         // if no input return all job categories
         if (props.input === '') {
             return el;
@@ -22,10 +23,13 @@ export function JobList(props: any) {
             return el.career.toLowerCase().includes(props.input)
         }
     })
+    console.log(typeof(filteredJobs));
+    console.log(filteredJobs);
+
     return (
         <Table>
         <tbody>
-        {filteredJobs.map((item) => {
+        {filteredJobs.map((item: any) => {
             return ( 
                 <tr key={item.career}>
                     <th>

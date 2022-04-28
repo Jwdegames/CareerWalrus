@@ -2,6 +2,7 @@ import "./JobListingButton.css";
 import PropTypes, { InferProps } from "prop-types";
 import { MouseEventHandler } from "react";
 import { useNavigate } from "react-router-dom";
+import Axios from 'axios';
 
 export function JobListingButton({title, career, salary} : 
     InferProps<typeof JobListingButton.propTypes>) {
@@ -15,6 +16,15 @@ export function JobListingButton({title, career, salary} :
         function loadCareerAnalysis(e: React.MouseEvent) {
             // Go to career analysis page
             navigator("../careers", {state: { listingState: title }});
+            Axios.post("oneStop/getSalary", {
+                keyword: title,
+                location: 0,
+                enableMetaData: true
+            }).then((response) => {
+                console.log(response);
+            }).catch((err: any) => {
+                console.log(err);
+            })
         }
     return (
         <>
