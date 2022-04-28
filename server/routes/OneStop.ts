@@ -46,7 +46,7 @@ router.post("/getSalary", async (req : any, res : any) => {
         axios.get(uri.toString(), { headers: { "Authorization": `Bearer ${apiKey}` } })
         .then((response: any) => {
             console.log(`api.careeronestop.org Status Code: ${response.status}`);
-            console.log(response.data)
+            // console.log(response.data)
             res.send(response.data);
         })
         .catch((error: any) => {
@@ -73,7 +73,7 @@ router.post("/getJobDesc", async (req : any, res : any) => {
         axios.get(uri.toString(), { headers: { "Authorization": `Bearer ${apiKey}` } })
         .then((response: any) => {
             console.log(`api.careeronestop.org Status Code: ${response.status}`);
-            console.log(response.data)
+            // console.log(response.data)
             res.send(response.data);
         })
         .catch((error: any) => {
