@@ -1,8 +1,8 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Table } from 'reactstrap';
 import jsonJobs from "./JobCategories.json"
 import { JobListingButton } from './JobListingButton';
-
+import Axios from 'axios';
 
 interface JobItem {
     career: string,
@@ -11,7 +11,20 @@ interface JobItem {
 }
 
 export function JobList(props: any) {
-    // const [salary, setSalary] = useState("")
+    useEffect(() => {
+        console.log("jobCategoryNameList was changed");
+        props.input2.map((jobCategoryName: string) => {
+            Axios.post("/oneStop/getSalary", {
+                keyword: jobCategoryName,
+                location: 0,
+                enableMetaData: true
+            }).then(response => {
+                console.log(response.data);
+            }).catch((err: any) => {
+                console.log(`Error ${err} when calling getSalary for jobCategoryName`);
+            })
+        })
+    }, [props.input2]);
 
     var filteredJobs = jsonJobs.filter((el: JobItem) => {
         // if no input return all job categories
