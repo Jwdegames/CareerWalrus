@@ -8,7 +8,7 @@ export default function FormBox() {
   const [input, setInput] = useState("");
 
   useEffect(() => {
-    let inputprompt =
+    let inputprompt =4
       "Use the following summary of an individual's interests to generate a list of comma-seperated engineering jobs that fits their professional and academic profile. Try to return engineering related careers. If the user enters a career related question, answer it.\n \n User Input: ";
 
     if (input) {
