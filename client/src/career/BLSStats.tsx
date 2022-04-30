@@ -71,6 +71,7 @@
         let count = array.length;
         for (let i = 0; i < count; i++) {
             let value = parseInt(array[i]);
+            if (isNaN(value)) continue;
             sum += value;
             // console.log("Added " + value);
         }
@@ -94,7 +95,11 @@
         console.log("yArray: " + yArray);
         let numerator = 0;
         let denominator = 0;
-        for (let i = 0; i < xArray.length; i++) {
+        for (let i = 0; i < xArray.length && i < yArray.length; i++) {
+            if (isNaN(xArray[i]) || isNaN(yArray[i])) {
+                continue;
+            }
+            // console.log(xArray[i] + ", " + yArray[i]);
             // Get the numerator of the slope
             numerator += (xArray[i] - xAvg) * (yArray[i] - yAvg);
             denominator += Math.pow((xArray[i] - xAvg),2); 
