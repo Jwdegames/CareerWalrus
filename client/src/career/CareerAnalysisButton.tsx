@@ -9,7 +9,7 @@ import Axios from 'axios';
  * 
  * @returns A button that fills in the career analysis field.
  */
-export function CareerAnalysisButton({title, company, description, cpiData, salary, location, updateFunc} : JobButtonInterface) {
+export function CareerAnalysisButton({title, company, description, cpiData, salary, location, blsLocation, updateFunc} : JobButtonInterface) {
 
     /**
      * Generates the description
@@ -21,8 +21,10 @@ export function CareerAnalysisButton({title, company, description, cpiData, sala
                     {description}
                 </p>
                 <p>
-                    The latest Consumer Price Index is {cpiData[0].value} recorded in {cpiData[0].periodName}, {cpiData[0].year}. The average CPI is {getAvg(cpiData, 'value')}.
-                    The slope of the CPI as a function of time (in months) is {getSlope(getTimeArray(cpiData, 'year', 'periodName'), getArray(cpiData, 'value').reverse())}.
+                    The latest Consumer Price Index in {blsLocation} is {cpiData[0].value} recorded in {cpiData[0].periodName}, {cpiData[0].year}. 
+                    The average CPI is {getAvg(cpiData, 'value').toFixed(3)}.
+                    The slope of the CPI as a function of time (in months) is {getSlope(getTimeArray(cpiData, 'year', 'periodName'), getArray(cpiData, 'value').reverse()).toFixed(3)}.
+                    This means that the CPI changes by about {getSlope(getTimeArray(cpiData, 'year', 'periodName'), getArray(cpiData, 'value').reverse()).toFixed(3)} every month on average.
                 </p>
             </div>
 

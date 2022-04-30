@@ -36,7 +36,7 @@ export function CABList(props: any) {
         
         // Fetch the Cost of living
         Axios.post("/bls/sendBLSRequest", {
-            seriesid: 'CUURS49BSA0',
+            seriesid: 'CUUR' + props.input3 +'SA0',
             startyear: '2008',
             endyear: '2022',})
         .then((response) => {
@@ -74,7 +74,8 @@ export function CABList(props: any) {
                                 description = {display}
                                 cpiData = {costOfLiving}
                                 salary = "TBD"
-                                location = { actualLocation}
+                                location = {actualLocation}
+                                blsLocation = {props.input4}
                                 updateFunc = {props.input as Function}
                             />
                     );
