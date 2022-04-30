@@ -46,3 +46,13 @@ button {
     height: 50px;
 
 }
+
+.area-drop-item {
+    height: 50px;
+}
+
+.area-drop-menu {
+    height: 75vh;
+    overflow: auto;
+    overflow-x: hidden;
+}

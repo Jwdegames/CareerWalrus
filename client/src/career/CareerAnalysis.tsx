@@ -20,9 +20,13 @@ export function CareerAnalysis() {
     const [opened, setOpened] = useState(false);
     // Selected area
     const [area, setArea] = useState("");
+    // Selected area code
+    const [areaCode, setAreaCode] = useState("");
     const state = useLocation();
     // Area codes
     let areaCodes: any = getAreaCodes();
+    let firstKey = Object.keys(areaCodes)[0];
+    let firstArea = areaCodes[firstKey];
     // Sets the input of listing state from 
     let setLSInput = () => {
         const stateProps = state.state as any;
@@ -31,6 +35,9 @@ export function CareerAnalysis() {
         console.log("Input is " + ls_input);
         setListingState(ls_input);
         setInit("True");
+        // Also need to update area
+        setArea(firstKey + " : " + firstArea);
+        setAreaCode(firstKey);
     }
     //console.log("Listing selection is " + listingSelection);
     // Below code should only be run once to prevent issues.
@@ -68,16 +75,20 @@ export function CareerAnalysis() {
                 <DropdownToggle className = "area-drop-btn">
                     {area}
                 </DropdownToggle>
-                <DropdownMenu>
+                <DropdownMenu className = "area-drop-menu">
                     {
                         Object.keys(areaCodes).map((key: any, value: any) => {
-                            console.log("Adding " + key + " : " + areaCodes[key]);
+                            //console.log("Adding " + key + " : " + areaCodes[key]);
                             //return null;
                             return (
-                            <DropdownItem onClick = {() => setArea(key+" "+areaCodes[key])}>{key +" : "+ areaCodes[key]}</DropdownItem>
-                            
-                            
-
+                            <DropdownItem key = {key} className = "area-drop-item" onClick = {
+                                () => {
+                                    setArea(key+" : "+areaCodes[key]);
+                                    setAreaCode(key);
+                                }
+                            }>
+                                {key +" : "+ areaCodes[key]}
+                            </DropdownItem>
                             );
                         })
                     }
@@ -89,8 +100,7 @@ export function CareerAnalysis() {
         <Container>
             <Row>
                 <Col className = "col" sm={4}>
-                    Test
-                    <CABList input = {setListingSelection} input2 = {listingState}></CABList>
+                    <CABList input = {setListingSelection} input2 = {listingState} input3 = {areaCode} input4 = {area}></CABList>
 
                 </Col>
                 
