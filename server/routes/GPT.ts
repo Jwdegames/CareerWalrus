@@ -21,6 +21,24 @@ router.post('/sendGPTPrompt', async (req : any, res : any) => {
     }
 });
 
+// Send a prompt to the trained model
+router.post('/sendRedditPrompt', async (req : any, res : any) => {
+    if (req) {
+        const response = await openai.createCompletionFromModel({
+            model  : "davinci:ft-personal-2022-04-25-16-47-45",
+            prompt : req.body.prompt
+        });
+
+        console.log("Reddit Response");
+        console.log(req.body.prompt);
+
+        console.log(response.data.choices[0].text);
+        res.send(response.data.choices[0].text);
+    } else {
+        console.log("Empty List");
+    }
+});
+
 // Export router to use in index.js
 module.exports = router;
 
