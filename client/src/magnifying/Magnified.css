@@ -1,0 +1,19 @@
+.magnified {
+    border: black 1px solid;
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    z-index: 100;
+    display: none;
+    overflow: hidden;
+    box-shadow: inset 0px 0px 4px black;
+}
+
+.magnifyable {
+    position: relative;
+}
+
+.windowed {
+    position: absolute;
+    overflow: hidden;
+}

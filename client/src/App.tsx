@@ -6,9 +6,10 @@ import { lazy, Suspense } from "react";
 import {JobListing} from "./joblisting";
 import { FAQ } from "./faq/faq"
 import { CareerAnalysis } from "./career/CareerAnalysis";
+import { Magnify } from "./magnifying/Magnifying";
 const FormBox = lazy(() => import("./FormBox"));
 
-function App() {
+function BasicApp() {
   return <>
     <MyNavbar/> 
     <Router>
@@ -22,6 +23,10 @@ function App() {
         </Suspense>
       </Router>
   </>;
+}
+
+function App() {
+  return <Magnify AreaToZoom={BasicApp()}/>
 }
 
 export default App;
