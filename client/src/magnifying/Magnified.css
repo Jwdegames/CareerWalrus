@@ -1,11 +1,12 @@
 .magnified {
     border: black 1px solid;
+    background-color: white;
     position: absolute;
     width: 100px;
     height: 100px;
     z-index: 100;
-    display: none;
     overflow: hidden;
+    display: block;
     box-shadow: inset 0px 0px 4px black;
 }
 
@@ -13,7 +14,18 @@
     position: relative;
 }
 
+.original-inner {
+    margin: 0 auto;
+    display: block;
+}
+
 .windowed {
     position: absolute;
     overflow: hidden;
+}
+
+.magnified-area {
+    position: absolute;
+    width: 100vw;
+    transform: scale(2);
 }

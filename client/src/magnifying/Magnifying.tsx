@@ -1,28 +1,44 @@
 import {MagnifiedInterface} from "./MagnifyingProps";
-import React, {Component} from 'react';
+import React, {useState} from 'react';
 import { classicNameResolver } from "typescript";
 import "./Magnified.css"
 
 export function Magnify({AreaToZoom} : MagnifiedInterface) {
-
+    const [mousePos, setMousePos] = useState([50,50]);
+    let magRef: React.RefObject<HTMLDivElement> = React.createRef();
+    console.log("Reload called");
     function getMousePos(e: React.MouseEvent) {
         console.log(e.clientX + " , " + e.clientY);
+    }
+
+    function moveMagnify(e: React.MouseEvent) {
+        let magElement = magRef.current!;
+        magElement.style.left = e.clientX - 50 +"px";
+        magElement.style.top = e.clientY - 50 +"px";
+        let midHeight = magElement.offsetHeight / 2;
+        let midWidth = magElement.offsetWidth / 2;
+        let xCoord = e.clientX / 2;
+        let yCoord = (e.clientY + window.scrollY) / 2;
+        //console.log("Scrolling to " + xCoord + "," + yCoord);
+        magElement.scrollTo(xCoord, yCoord);
     }
 
     return (
         <div id = "magnify" className = "magnifyable">
              <span className="original-inner">
 
-            <div className="original magnifyable" onMouseMove={getMousePos}>
+            <div className="original magnifyable" onMouseMove={moveMagnify}>
                 <div className="az-overly az-overlay"></div>
                 <span className="original-inner">
                     {React.cloneElement(AreaToZoom)}
                 </span>
             </div>
 
-            <div className="magnified windowed">
+            <div className="magnified windowed" ref = {magRef as React.RefObject<HTMLDivElement>}>
                 <div className="copy magnifyable">
-                    {React.cloneElement(AreaToZoom)}
+                    {React.cloneElement(AreaToZoom,{
+                        className: "magnified-area"
+                    })}
                 </div>
             </div>
 

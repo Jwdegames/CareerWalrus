@@ -10,7 +10,7 @@ import { Magnify } from "./magnifying/Magnifying";
 const FormBox = lazy(() => import("./FormBox"));
 
 function BasicApp() {
-  return <>
+  return <div>
     <MyNavbar/> 
     <Router>
         <Suspense fallback={<div>Loading...</div>}>
@@ -22,7 +22,7 @@ function BasicApp() {
           </Routes>
         </Suspense>
       </Router>
-  </>;
+  </div>;
 }
 
 function App() {
