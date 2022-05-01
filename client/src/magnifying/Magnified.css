@@ -2,8 +2,8 @@
     border: black 1px solid;
     background-color: white;
     position: absolute;
-    width: 100px;
-    height: 100px;
+    width: 150px;
+    height: 150px;
     z-index: 100;
     overflow: hidden;
     display: block;
@@ -12,6 +12,10 @@
 
 .magnifyable {
     position: relative;
+}
+
+.static {
+    position: absolute;
 }
 
 .original-inner {
@@ -27,5 +31,8 @@
 .magnified-area {
     position: absolute;
     width: 100vw;
+    height: 50vw;
     transform: scale(2);
+    left: 550px;
+    top: 250px;
 }

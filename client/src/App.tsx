@@ -27,6 +27,7 @@ function BasicApp() {
 
 function App() {
   return <Magnify AreaToZoom={BasicApp()}/>
+  //return <BasicApp></BasicApp>;
 }
 
 export default App;
