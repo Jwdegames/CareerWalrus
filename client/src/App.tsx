@@ -13,11 +13,12 @@ interface BasicAppInterface {
   magnified: boolean;
   setMagnified: Function
   fake: boolean
+  Translate: React.RefObject<HTMLDivElement>
 }
 
-function App({magnified, setMagnified, fake} : BasicAppInterface) {
+function App({magnified, setMagnified, fake, Translate} : BasicAppInterface) {
   return <>
-    <MyNavbar magnified = {magnified} setMagnified = {setMagnified} fake = {fake}/> 
+    <MyNavbar magnified = {magnified} setMagnified = {setMagnified} fake = {fake} Translate = {Translate}/> 
     <Router>
         <Suspense fallback={<div>Loading...</div>}>
           <Routes>

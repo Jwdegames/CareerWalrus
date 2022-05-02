@@ -9,16 +9,20 @@ class AppToZoom extends AbstractAreaToZoom {
     magnified: boolean;
     updateMagnified: Function;
     fake: boolean;
+    myRef: React.RefObject<HTMLDivElement>
 
     constructor(props : MagnifiedCloneFakeInterface) {
         super(props);
         this.magnified = props.magnified
         this.updateMagnified = props.updateMagnified;
         this.fake = props.fake;
+        this.myRef = React.createRef();
     }
 
     render () {
-        return <App magnified = {this.magnified} setMagnified = {this.updateMagnified} fake = {this.fake}></App>;
+        return <>
+            <App magnified = {this.magnified} setMagnified = {this.updateMagnified} fake = {this.fake} Translate = {this.myRef}></App>
+        </>;
     }
 }
 
