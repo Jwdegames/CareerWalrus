@@ -1,0 +1,43 @@
+.magnified {
+    border: black 1px solid;
+    background-color: white;
+    position: absolute;
+    width: 150px;
+    height: 150px;
+    z-index: 100;
+    overflow: hidden;
+    display: block;
+    box-shadow: inset 0px 0px 4px black;
+}
+
+.magnifyable {
+    position: relative;
+}
+
+.static {
+    position: absolute;
+}
+
+.original-inner {
+    margin: 0 auto;
+    display: block;
+}
+
+.windowed {
+    position: absolute;
+    overflow: hidden;
+}
+
+.magnified-area {
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    transform: scale(2);
+    left: calc(50vw + 100px);
+    top: 500px;
+}
+
+.hidden {
+    display: none;
+}
+

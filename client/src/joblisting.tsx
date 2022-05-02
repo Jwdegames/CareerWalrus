@@ -5,6 +5,7 @@ import Axios from "axios";
 import "./JobListing.css";
 import jsonJobs from "./JobCategories.json";
 import { JobList } from "./JobList";
+import { NavigateFunction } from "react-router-dom";
 
 // Makes A Job Listing Button given title, career, and salary
 
@@ -12,7 +13,7 @@ export function makeJobProps(title: string, career: string, salary: string) {
     return [title, career, salary];
 }
 
-export function JobListing() {
+export function JobListing({navigate} : JobListingInterface) {
     const [inputText, setInputText] = useState("");
     let inputHandler = (e: any) => {
         var lowerCase = e.target.value.toLowerCase();
@@ -63,9 +64,14 @@ export function JobListing() {
                     <Input id="job-listing-input" type="text" onChange={inputHandler}></Input>
                 </FormGroup>
                 </Form>
-                <JobList input={inputText}></JobList>
+
+                <JobList input={inputText} navigator = {navigate}></JobList>
             </CardBody>
             </Card>
         </>
     );
+}
+
+interface JobListingInterface {
+    navigate: NavigateFunction;
 }
