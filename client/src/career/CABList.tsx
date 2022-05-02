@@ -12,7 +12,7 @@ import { useState, useEffect } from "react";
 export function CABList(props: any) {
     var buttonsList: JobItem[] = [];
     const [jobListState, setJobListState]: [any, any] = useState([]);
-
+    const [costOfLiving, setCostOfLiving]: [any, any] = useState([]);
     useEffect(() => {
         console.log("IS USE EFFECT HERE!!");
         Axios.post("/oneStop/getJobs", {
@@ -33,6 +33,21 @@ export function CABList(props: any) {
         .catch((err: any) => {
             console.log(err);
         })
+        
+        // Fetch the Cost of living
+        Axios.post("/bls/sendBLSRequest", {
+            seriesid: 'CUUR' + props.input3 +'SA0',
+            startyear: '2008',
+            endyear: '2022',})
+        .then((response) => {
+            console.log(response);
+            setCostOfLiving(Object.values(response.data.Results.series[0].data));
+        })
+        .catch((err: any) => {
+            console.log(err);
+        })
+
+        
     }, []);
 
     // Comment this out to disable the testing
@@ -57,8 +72,10 @@ export function CABList(props: any) {
                                 title = {btn.JobTitle}
                                 company = {btn.Company}
                                 description = {display}
+                                cpiData = {costOfLiving}
                                 salary = "TBD"
-                                location = { actualLocation}
+                                location = {actualLocation}
+                                blsLocation = {props.input4}
                                 updateFunc = {props.input as Function}
                             />
                     );

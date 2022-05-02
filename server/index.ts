@@ -41,14 +41,17 @@ app.use("/gpt", gptRequests);
 const oneStopRequests = require("./routes/OneStop.ts");
 app.use("/oneStop", oneStopRequests);
 
+const blsRequests = require("./routes/BLS.ts");
+app.use("/bls", blsRequests);
+
 // All other GET requests not handled before will return our React app
 app.get('*', (req: any, res: any) => {
     res.sendFile(path.join(__dirname + "/../client/build/index.html"));
 });
 
 // Server Output
-const port = process.env.PORT || 1234;
-app.listen(process.env.PORT || 1234, () => {
+const port = process.env.PORT || 80;
+app.listen(process.env.PORT || 80, () => {
     console.log(`Server running on port ${port}`);
 });
 

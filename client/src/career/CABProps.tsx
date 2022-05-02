@@ -16,8 +16,10 @@ export interface JobButtonInterface{
     title: string,
     company: string,
     description: string,
+    cpiData: any,
     salary: string,
     location: string,
+    blsLocation: string,
     updateFunc: Function;
     
 }
