@@ -38,6 +38,7 @@ export function JobListing() {
               frequency_penalty: 0,
               presence_penalty: 0,
             }).then((response) => {
+              console.log(response.data);
               setOutputJobs(response.data);
             });
             console.log(setOutputJobs);
@@ -65,7 +66,7 @@ export function JobListing() {
                     <Input id="job-listing-input" type="text" onChange={inputHandler}></Input>
                 </FormGroup>
                 </Form>
-                <JobList input={inputText}></JobList>
+                <JobList input={inputText} input2={outputJobs}></JobList>
             </CardBody>
             </Card>
         </>

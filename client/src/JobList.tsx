@@ -12,18 +12,29 @@ interface JobItem {
 
 export function JobList(props: any) {
     useEffect(() => {
-        console.log("jobCategoryNameList was changed");
-        props.input2.map((jobCategoryName: string) => {
-            Axios.post("/oneStop/getSalary", {
-                keyword: jobCategoryName,
-                location: 0,
-                enableMetaData: true
-            }).then(response => {
-                console.log(response.data);
-            }).catch((err: any) => {
-                console.log(`Error ${err} when calling getSalary for jobCategoryName`);
+        if (props.input2 === null) {
+            console.log("Empty list of potential jobs for candidate")
+        } else {
+            console.log("jobCategoryNameList was changed");
+            console.log(props.input2);
+            var jobsArray = props.input2.split(",");
+
+            jobsArray.map((jobCategoryName: string) => {
+                // Clean up name
+                jobCategoryName = jobCategoryName.trim();
+                console.log(jobCategoryName);
+
+                Axios.post("/oneStop/getSalary", {
+                    keyword: jobCategoryName,
+                    location: 0,
+                    enableMetaData: true
+                }).then(response => {
+                    console.log(response.data.OccupationDetail);
+                }).catch((err: any) => {
+                    console.log(`Error ${err} when calling getSalary for jobCategoryName`);
+                })
             })
-        })
+        }
     }, [props.input2]);
 
     var filteredJobs = jsonJobs.filter((el: JobItem) => {

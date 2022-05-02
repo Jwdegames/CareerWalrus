@@ -84,7 +84,7 @@ router.post('/sendCareerMatchPrompt', async (req : any, res : any) => {
         
         Statement:` + req.body.prompt + `
         
-        Output Example: Web Administrators, Data Scientists, and Blockchain Engineers
+        Output Example: Web Administrators, Data Scientists, Blockchain Engineers
         
         Output:`
 
@@ -93,6 +93,7 @@ router.post('/sendCareerMatchPrompt', async (req : any, res : any) => {
         console.log(req.body);
 
         console.log(response.data.choices[0].text);
+        console.log(typeof(response.data.choices[0].text));
         res.send(response.data.choices[0].text);
     } else {
         console.log("Empty List");
