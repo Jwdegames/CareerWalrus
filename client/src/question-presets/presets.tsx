@@ -3,19 +3,11 @@ import { Table } from "reactstrap";
 import Axios from "axios";
 
 interface PresetProps {
-  setInput: React.Dispatch<React.SetStateAction<string>>;
+  setInput: (input: string) => void;
   output: string;
 }
 
-const preset_questions: string[] = [
-  "How do I choose a career?",
-  "What's the typical career path in engineering?",
-  "Where do engineers work?",
-  "How long is an engineer's work day?",
-  "What are the pros and cons of engineering?",
-  "Do I have to learn how to code?",
-  "What if some day I decide I want to do something else?",
-];
+const preset_questions: string[] = ["How do I choose a career?", "I like animals, what engineering careers suit me?", "I like to swim.", "What's the typical career path in engineering?", "Do I have to learn how to code?"];
 
 export function QuestionPresets({ setInput, output }: PresetProps) {
   // 1) Reacts to GPT3's own responses to generate follow up questions. Does not create an infinite loop because useEffect does not change any other useState variables
