@@ -1,12 +1,10 @@
 import "./JobListingButton.css";
 import PropTypes, { InferProps } from "prop-types";
 import { MouseEventHandler } from "react";
-import { useNavigate } from "react-router-dom";
+import { NavigateFunction, useNavigate } from "react-router-dom";
 
-export function JobListingButton({title, career, salary} : 
-    InferProps<typeof JobListingButton.propTypes>) {
-
-        var navigator = useNavigate();
+export function JobListingButton({title, career, salary, navigator} : 
+    JobListingButtonInterface) {
         /**
          * Loads the career analysis elements when this job is pressed.
          * 
@@ -14,7 +12,7 @@ export function JobListingButton({title, career, salary} :
          */
         function loadCareerAnalysis(e: React.MouseEvent) {
             // Go to career analysis page
-            navigator("../careers", {state: { listingState: title }});
+            navigator("../careers", {state: { listingState: title }, replace: true});
         }
     return (
         <>
@@ -33,8 +31,9 @@ export function JobListingButton({title, career, salary} :
     );
 }
 
-JobListingButton.propTypes = {
-    title: PropTypes.string.isRequired,
-    career: PropTypes.string.isRequired,
-    salary: PropTypes.string.isRequired
-};
+interface JobListingButtonInterface {
+    title: string;
+    career: string;
+    salary: string;
+    navigator: NavigateFunction;
+}

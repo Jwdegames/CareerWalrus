@@ -1,4 +1,4 @@
-
+import {Magnify} from "../magnifying/Magnifying";
 
 /**
  * Makes a FAQ for the landing page to use. 
