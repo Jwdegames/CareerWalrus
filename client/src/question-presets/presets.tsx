@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
-import { Table } from "reactstrap";
+import { Table, Button } from "reactstrap";
 import Axios from "axios";
+import "./presets.css";
 
 interface PresetProps {
   setInput: (input: string) => void;
@@ -37,25 +38,20 @@ export function QuestionPresets({ setInput, output }: PresetProps) {
   // 2) Shorthand functions to breakdown tasks to make coding more composed
 
   // A shorthand component to build buttons that call GPT3 with questions
-  const renderButton = (question: string) => <button onClick={() => setInput(question)}>{question}</button>; // lambda can be optimized for performance with useCallback to prevent rerender
+  const renderButton = (question: string) => (
+    <Button color="primary" size="lg" onClick={() => setInput(question)}>
+      {" "}
+      {question}{" "}
+    </Button>
+  ); // lambda can be optimized for performance with useCallback to prevent rerender
 
   //  3) The list of questions, with followup appearing at top based on if output == '' or not
   return (
-    <Table variant={"light"}>
-      <tbody>
-        {followUpQuestion ? (
-          <tr>
-            <th>{renderButton(followUpQuestion)}</th>
-          </tr>
-        ) : null}
-        {preset_questions.map((question) => {
-          return (
-            <tr key={question}>
-              <th>{renderButton(question)}</th>
-            </tr>
-          );
-        })}
-      </tbody>
-    </Table>
+    <div className="PresetGroup">
+      {followUpQuestion ? <div className="Question">{renderButton(followUpQuestion)}</div> : null}
+      {preset_questions.map((question) => {
+        return <div className="Question">{renderButton(question)}</div>;
+      })}
+    </div>
   );
 }
