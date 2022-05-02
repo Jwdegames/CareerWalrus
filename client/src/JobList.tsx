@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { NavigateFunction } from 'react-router-dom';
 import { Table } from 'reactstrap';
 import jsonJobs from "./JobCategories.json"
 import { JobListingButton } from './JobListingButton';
@@ -10,16 +11,21 @@ interface JobItem{
     salary: string
 }
 
+interface JobListInterface {
+    input: string
+    navigator: NavigateFunction;
+}
 
-export function JobList(props: any) {
+
+export function JobList({input, navigator} : JobListInterface) {
     const filteredJobs = jsonJobs.filter((el: JobItem) => {
         // if no input return all job categories
-        if (props.input === '') {
+        if (input === '') {
             return el;
         }
         // return the item which contains the user input
         else {
-            return el.career.toLowerCase().includes(props.input)
+            return el.career.toLowerCase().includes(input)
         }
     })
     return (
@@ -32,7 +38,8 @@ export function JobList(props: any) {
                         <JobListingButton 
                             title = {item.career}
                             career= {item.description}
-                            salary = {item.salary}/>
+                            salary = {item.salary}
+                            navigator = {navigator}/>
                     </th>
                 </tr>
             );

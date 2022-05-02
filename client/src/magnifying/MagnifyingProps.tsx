@@ -1,3 +1,5 @@
+import { NavigateFunction } from "react-router-dom";
+
 /**
  * Interface for the Magnifiyng Glass
  */
@@ -10,6 +12,7 @@ export interface MagnifiedCloneInterface{
     //AreaToZoom: React.ReactElement;
     magnified: boolean;
     updateMagnified: Function;
+    navigate: NavigateFunction
 }
 
 export interface MagnifiedCloneFakeInterface{
@@ -17,6 +20,7 @@ export interface MagnifiedCloneFakeInterface{
     magnified: boolean;
     updateMagnified: Function;
     fake: boolean;
+    navigate: NavigateFunction
 }
 
 

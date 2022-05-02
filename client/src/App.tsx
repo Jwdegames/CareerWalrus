@@ -1,7 +1,7 @@
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import {MyNavbar} from"./navbar";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, NavigateFunction } from "react-router-dom";
 import { lazy, Suspense } from "react";
 import {JobListing} from "./joblisting";
 import { FAQ } from "./faq/faq"
@@ -14,21 +14,20 @@ interface BasicAppInterface {
   setMagnified: Function
   fake: boolean
   Translate: React.RefObject<HTMLDivElement>
+  navigate: NavigateFunction;
 }
 
-function App({magnified, setMagnified, fake, Translate} : BasicAppInterface) {
+function App({magnified, setMagnified, fake, Translate, navigate} : BasicAppInterface) {
   return <>
     <MyNavbar magnified = {magnified} setMagnified = {setMagnified} fake = {fake} Translate = {Translate}/> 
-    <Router>
         <Suspense fallback={<div>Loading...</div>}>
           <Routes>
             <Route path="/" element={<div><FAQ /></div>} />
-            <Route path="/jobs" element={<JobListing />} />
+            <Route path="/jobs" element={<JobListing navigate = {navigate}/>} />
             <Route path="/careers" element={<CareerAnalysis/>}/>
             <Route path="/question-and-answer" element={<FormBox />} />
           </Routes>
         </Suspense>
-      </Router>
     </>;
 }
 

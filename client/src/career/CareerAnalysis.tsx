@@ -54,7 +54,7 @@ export function CareerAnalysis() {
      */
     function loadJobListing(e: React.MouseEvent) {
         // Go to job listing page
-        navigator("../job", {state: { listingState: listingSelection }});
+        navigator("../jobs", {state: { listingState: listingSelection }});
     }
 
     /**

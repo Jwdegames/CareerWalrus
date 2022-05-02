@@ -4,12 +4,14 @@ import { AbstractAreaToZoom } from "./MagnifyingClasses";
 import "./Magnified.css"
 import App from "../App";
 import { FileWatcherEventKind } from "typescript";
+import {NavigateFunction, useNavigate} from "react-router-dom";
 
 class AppToZoom extends AbstractAreaToZoom {
     magnified: boolean;
     updateMagnified: Function;
     fake: boolean;
-    myRef: React.RefObject<HTMLDivElement>
+    myRef: React.RefObject<HTMLDivElement>;
+    navigate: NavigateFunction;
 
     constructor(props : MagnifiedCloneFakeInterface) {
         super(props);
@@ -17,11 +19,12 @@ class AppToZoom extends AbstractAreaToZoom {
         this.updateMagnified = props.updateMagnified;
         this.fake = props.fake;
         this.myRef = React.createRef();
+        this.navigate = props.navigate;
     }
 
     render () {
         return <>
-            <App magnified = {this.magnified} setMagnified = {this.updateMagnified} fake = {this.fake} Translate = {this.myRef}></App>
+            <App magnified = {this.magnified} setMagnified = {this.updateMagnified} fake = {this.fake} Translate = {this.myRef} navigate = {this.navigate}></App>
         </>;
     }
 }
@@ -30,19 +33,20 @@ class MagnifiedClone extends React.Component<MagnifiedCloneInterface> {
     //AreaToZoom : React.ReactElement;
     magnified: boolean;
     updateMagnified: Function;
-
+    navigate: NavigateFunction;
     constructor(props : MagnifiedCloneInterface) {
         super(props);
         //console.log("constructing");
         //this.AreaToZoom = props.AreaToZoom;
         this.magnified = props.magnified
         this.updateMagnified = props.updateMagnified;
+        this.navigate = props.navigate;
     }
 
     render () {
         //console.log("Rendering");
         return <div className = "magnified-area">
-            <AppToZoom magnified = {this.magnified} updateMagnified = {this.updateMagnified} fake = {true}/>
+            <AppToZoom magnified = {this.magnified} updateMagnified = {this.updateMagnified} fake = {true} navigate = {this.navigate}/>
         </div>;
     }
 }
@@ -58,6 +62,9 @@ export function Magnify() {
     let magAreaRef: React.RefObject<HTMLDivElement> = React.createRef();
     let mainAreaRef: React.RefObject<HTMLDivElement> = React.createRef();
     //console.log("Reload called");
+
+    var navigator = useNavigate();
+
     function getMousePos(e: React.MouseEvent) {
         console.log(e.clientX + " , " + e.clientY);
     }
@@ -95,14 +102,14 @@ export function Magnify() {
             <span className="original-inner">
                 <div className="original magnifyable" >
                     <span className="original-inner">
-                        <AppToZoom magnified = {magnified} updateMagnified = {setMagnified} fake = {false}/>
+                        <AppToZoom magnified = {magnified} updateMagnified = {setMagnified} fake = {false} navigate = {navigator}/>
                     </span>
                 </div>
 
                 <span className = "magnifyable">
                     <div className={"magnified windowed" + (magnified ? "" : " hidden")} ref = {magRef as React.RefObject<HTMLDivElement>}>
                         <div className="copy static" ref = {magAreaRef as React.RefObject<HTMLDivElement>}>
-                            <MagnifiedClone magnified = {magnified} updateMagnified = {setMagnified}/>
+                            <MagnifiedClone magnified = {magnified} updateMagnified = {setMagnified} navigate = {navigator}/>
                         </div>
                     </div>
                 </span>
