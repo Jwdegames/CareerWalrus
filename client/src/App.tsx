@@ -9,9 +9,15 @@ import { CareerAnalysis } from "./career/CareerAnalysis";
 import { Magnify } from "./magnifying/Magnifying";
 const FormBox = lazy(() => import("./FormBox"));
 
-function BasicApp() {
-  return <div>
-    <MyNavbar/> 
+interface BasicAppInterface {
+  magnified: boolean;
+  setMagnified: Function
+  fake: boolean
+}
+
+function App({magnified, setMagnified, fake} : BasicAppInterface) {
+  return <>
+    <MyNavbar magnified = {magnified} setMagnified = {setMagnified} fake = {fake}/> 
     <Router>
         <Suspense fallback={<div>Loading...</div>}>
           <Routes>
@@ -22,11 +28,12 @@ function BasicApp() {
           </Routes>
         </Suspense>
       </Router>
-  </div>;
+    </>;
 }
 
-function App() {
-  return <Magnify AreaToZoom={BasicApp()}/>
+function testApp() {
+  function dummy(magnified: boolean) {}
+  //return <Magnify AreaToZoom={BasicApp({magnified: false, setMagnified: dummy}) }/>
   //return <BasicApp></BasicApp>;
 }
 

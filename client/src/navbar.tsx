@@ -1,13 +1,32 @@
+import React from "react";
 import {
   Navbar,
   Nav,
   NavItem,
   NavbarBrand,
   Collapse,
-  NavLink
+  NavLink,
+  Button
 } from "reactstrap";
+import "./navbar.css";
 
-export function MyNavbar() {
+interface MyNavbarInterface {
+  magnified: boolean
+  setMagnified: Function
+  fake: boolean
+}
+
+export function MyNavbar({magnified, setMagnified, fake} : MyNavbarInterface) {
+  //console.log("Reloading with magnified: " + magnified);
+  function toggleMagnified(e : React.MouseEvent) {
+    //console.log("Modifiying: " + setMagnified);
+    magnified = !magnified;
+    if (fake) {
+      magnified = false;
+    }
+    setMagnified(magnified);
+    //console.log(magnified);
+  }
 
   return (
     <>
@@ -27,6 +46,9 @@ export function MyNavbar() {
             </NavItem>
             <NavItem>
               <div id="google_translate_element"></div>
+            </NavItem>
+            <NavItem>
+              <Button onClick = {toggleMagnified}>Toggle Magnifier</Button>
             </NavItem>
           </Nav>
         </Collapse>
