@@ -1,0 +1,13 @@
+.PresetGroup {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  justify-content: center;
+}
+
+.Question {
+  width: 25em;
+}
+
+/* flex-basis: 0; */

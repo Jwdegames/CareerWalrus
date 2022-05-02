@@ -1,21 +1,14 @@
 import { useEffect, useState } from "react";
-import { Table } from "reactstrap";
+import { Table, Button } from "reactstrap";
 import Axios from "axios";
+import "./presets.css";
 
 interface PresetProps {
-  setInput: React.Dispatch<React.SetStateAction<string>>;
+  setInput: (input: string) => void;
   output: string;
 }
 
-const preset_questions: string[] = [
-  "How do I choose a career?",
-  "What's the typical career path in engineering?",
-  "Where do engineers work?",
-  "How long is an engineer's work day?",
-  "What are the pros and cons of engineering?",
-  "Do I have to learn how to code?",
-  "What if some day I decide I want to do something else?",
-];
+const preset_questions: string[] = ["How do I choose a career?", "I like animals, what engineering careers suit me?", "I like to swim.", "What's the typical career path in engineering?", "Do I have to learn how to code?"];
 
 export function QuestionPresets({ setInput, output }: PresetProps) {
   // 1) Reacts to GPT3's own responses to generate follow up questions. Does not create an infinite loop because useEffect does not change any other useState variables
@@ -45,25 +38,20 @@ export function QuestionPresets({ setInput, output }: PresetProps) {
   // 2) Shorthand functions to breakdown tasks to make coding more composed
 
   // A shorthand component to build buttons that call GPT3 with questions
-  const renderButton = (question: string) => <button onClick={() => setInput(question)}>{question}</button>; // lambda can be optimized for performance with useCallback to prevent rerender
+  const renderButton = (question: string) => (
+    <Button color="primary" size="lg" onClick={() => setInput(question)}>
+      {" "}
+      {question}{" "}
+    </Button>
+  ); // lambda can be optimized for performance with useCallback to prevent rerender
 
   //  3) The list of questions, with followup appearing at top based on if output == '' or not
   return (
-    <Table variant={"light"}>
-      <tbody>
-        {followUpQuestion ? (
-          <tr>
-            <th>{renderButton(followUpQuestion)}</th>
-          </tr>
-        ) : null}
-        {preset_questions.map((question) => {
-          return (
-            <tr key={question}>
-              <th>{renderButton(question)}</th>
-            </tr>
-          );
-        })}
-      </tbody>
-    </Table>
+    <div className="PresetGroup">
+      {followUpQuestion ? <div className="Question">{renderButton(followUpQuestion)}</div> : null}
+      {preset_questions.map((question) => {
+        return <div className="Question">{renderButton(question)}</div>;
+      })}
+    </div>
   );
 }
