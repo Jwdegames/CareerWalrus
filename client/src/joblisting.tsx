@@ -10,68 +10,70 @@ import { NavigateFunction } from "react-router-dom";
 // Makes A Job Listing Button given title, career, and salary
 
 export function makeJobProps(title: string, career: string, salary: string) {
-    return [title, career, salary];
+  return [title, career, salary];
 }
 
-export function JobListing({navigate} : JobListingInterface) {
-    const [inputText, setInputText] = useState("");
-    let inputHandler = (e: any) => {
-        var lowerCase = e.target.value.toLowerCase();
-        setInputText(lowerCase);
+export function JobListing({ navigate }: JobListingInterface) {
+  const [inputText, setInputText] = useState("");
+  let inputHandler = (e: any) => {
+    var lowerCase = e.target.value.toLowerCase();
+    setInputText(lowerCase);
+  };
+
+  const [inputDescription, setIntputDescription] = useState("");
+  const [outputJobs, setOutputJobs] = useState("<No Input Detected>");
+  let descriptionHandler = (e: any) => {
+    setIntputDescription(e.target.value);
+  };
+
+  useEffect(() => {
+    if (inputDescription) {
+      let debouncer = setTimeout(() => {
+        Axios.post("/gpt/sendCareerMatchPrompt", {
+          prompt: inputDescription,
+          temperature: 0.1,
+          max_tokens: 256,
+          top_p: 1,
+          frequency_penalty: 0,
+          presence_penalty: 0,
+        }).then((response) => {
+          setOutputJobs(response.data);
+        });
+        console.log(setOutputJobs);
+      }, 1000);
+      return () => {
+        clearTimeout(debouncer);
+      };
     }
+  }, [inputDescription]); // we only want to ask GPT3 for response when user enters text so we listen specifically to 'input'
 
-    const [inputDescription, setIntputDescription] = useState("");
-    const [outputJobs, setOutputJobs] = useState("<No Input Detected>");
-    let descriptionHandler = (e: any) => {
-        setIntputDescription(e.target.value);
-    }
+  return (
+    <>
+      <Card className="JobListingForm" style={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
+        <CardBody>
+          <Form>
+            <FormGroup>
+              <Label for="job-description-input">Enter a basic job description, and the system will give a list of job catagory suggestions!</Label>
+              <br />
+              <Input id="job-description-input" type="text" onChange={descriptionHandler}></Input>
+              <br />
+              <p>
+                A list of career pathways that might fit you are <b>{outputJobs}</b>.
+              </p>
+              <br />
+              <Label for="job-listing-input">Enter a job category to perform a filtered search.</Label>
+              <br />
+              <Input id="job-listing-input" type="text" onChange={inputHandler}></Input>
+            </FormGroup>
+          </Form>
 
-    useEffect(() => {
-        if (inputDescription) {
-          let debouncer = setTimeout(() => {
-            Axios.post("/gpt/sendCareerMatchPrompt", {
-              prompt: inputDescription,
-              temperature: 0.1,
-              max_tokens: 256,
-              top_p: 1,
-              frequency_penalty: 0,
-              presence_penalty: 0,
-            }).then((response) => {
-              setOutputJobs(response.data);
-            });
-            console.log(setOutputJobs);
-          }, 1000);
-          return () => {
-            clearTimeout(debouncer);
-          };
-        }
-      }, [inputDescription]); // we only want to ask GPT3 for response when user enters text so we listen specifically to 'input'
-
-    return (
-        <>
-            <Card style={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
-            <CardBody>
-                <Form>
-                <FormGroup>
-                    <Label for="job-description-input">Enter a basic job description, and the system will give a list of job catagory suggestions!</Label>
-                    <br />
-                    <Input id="job-description-input" type="text" onChange={descriptionHandler}></Input>
-                    <br />
-                    <p>A list of career pathways that might fit you are <b>{outputJobs}</b>.</p>
-                    <br />
-                    <Label for="job-listing-input">Enter a job category to perform a filtered search.</Label>
-                    <br />
-                    <Input id="job-listing-input" type="text" onChange={inputHandler}></Input>
-                </FormGroup>
-                </Form>
-
-                <JobList input={inputText} navigator = {navigate}></JobList>
-            </CardBody>
-            </Card>
-        </>
-    );
+          <JobList input={inputText} navigator={navigate}></JobList>
+        </CardBody>
+      </Card>
+    </>
+  );
 }
 
 interface JobListingInterface {
-    navigate: NavigateFunction;
+  navigate: NavigateFunction;
 }

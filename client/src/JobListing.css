@@ -1,12 +1,15 @@
 tr {
-    background-color: grey;
+  background-color: grey;
 }
 
 th {
-    border: 1px solid black;
+  border: 1px solid black;
 }
 
 table {
-    border-collapse: separate;
-    border-spacing: 0 20px;
+  border-collapse: separate;
+  border-spacing: 0 20px;
+}
+
+.JobListingForm {
 }
