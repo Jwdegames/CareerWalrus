@@ -37,7 +37,7 @@ export function QuestionPresets({ setInput, output }: PresetProps) {
 
   // A shorthand component to build buttons that call GPT3 with questions
   const renderButton = (question: string) => (
-    <Button color="primary" size="lg" onClick={() => setInput(question)}>
+    <Button className="static-question" color="primary" size="lg" onClick={() => setInput(question)}>
       {" "}
       {question}{" "}
     </Button>
