@@ -36,7 +36,7 @@ export function JobListingButton({title, career, salary} :
                     {career}
                 </p>
                 <p>
-                    {salary}
+                    Median Annual Salary: ${salary}
                 </p>
             </button>
         </>

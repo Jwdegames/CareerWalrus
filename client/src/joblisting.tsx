@@ -13,8 +13,6 @@ export function makeJobProps(title: string, career: string, salary: string) {
 }
 
 export function JobListing() {
-    const [jobCategoryNameList, setjobCategoryNameList] = useState([]); // State variable for array of job category names
-
     const [inputText, setInputText] = useState("");
     let inputHandler = (e: any) => {
         var lowerCase = e.target.value.toLowerCase();
@@ -41,7 +39,7 @@ export function JobListing() {
               console.log(response.data);
               setOutputJobs(response.data);
             });
-            console.log(setOutputJobs);
+            // console.log(setOutputJobs);
           }, 1000);
           return () => {
             clearTimeout(debouncer);
