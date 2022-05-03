@@ -16,15 +16,28 @@ export function CABList(props: any) {
     const [firstLoad, setFirstLoad] = useState(true);
     var jobTestList: any = [];
     
-    // useEffect(() => {
-    //     if (firstLoad) {
-    //         setFirstLoad(false);
-    //     }
-    // }, [])
+    useEffect(() => {
+        if (firstLoad) {
+            setFirstLoad(false);
+        }
+    }, [])
 
     useEffect(() => {
         jobTestList = [];
         let myFunc = async () => {
+            // Fetch the Cost of living
+            await Axios.post("/bls/sendBLSRequest", {
+                seriesid: 'CUUR' + props.input3 +'SA0',
+                startyear: '2008',
+                endyear: '2022',})
+            .then((response) => {
+                console.log(response);
+                setCostOfLiving(Object.values(response.data.Results.series[0].data));
+            })
+            .catch((err: any) => {
+                console.log(err);
+            })
+            
             console.log("IS USE EFFECT HERE!!");
 
             const respJob = await Axios.post("/oneStop/getJobs", {
@@ -38,9 +51,9 @@ export function CABList(props: any) {
                 days: 30})
             // setJobListState(Object.values(respJob.data.Jobs));
 
-            for await (let job of respJob.data.Jobs) {
-                // console.log("In for loop");
-                // console.log(job);
+            for (let job of respJob.data.Jobs) {
+                console.log("In for loop");
+                console.log(job);
 
                 // Get salary information for job category from OneStop
                 const respDesc = await Axios.post("/oneStop/getJobDesc", {
@@ -53,7 +66,7 @@ export function CABList(props: any) {
                 newObj.postDate = job.AccquisitionDate;
                 newObj.url = job.URL;
                 newObj.location = job.Location;
-                newObj.key = job.JvID;
+                newObj.key = job.JvId;
                 console.log(newObj);
                 jobTestList.push(newObj);
                 // .then((response) => {
@@ -103,18 +116,6 @@ export function CABList(props: any) {
             //     console.log(err);
             // })
             
-            // Fetch the Cost of living
-            await Axios.post("/bls/sendBLSRequest", {
-                seriesid: 'CUUR' + props.input3 +'SA0',
-                startyear: '2008',
-                endyear: '2022',})
-            .then((response) => {
-                console.log(response);
-                setCostOfLiving(Object.values(response.data.Results.series[0].data));
-            })
-            .catch((err: any) => {
-                console.log(err);
-            })
             
             // console.log("Before for loop");
             // for (let job of jobListState) {
@@ -143,7 +144,7 @@ export function CABList(props: any) {
             // // console.log(jobListState);
         }
         myFunc();
-    }, []);
+    }, [firstLoad]);
 
 
 
