@@ -37,9 +37,10 @@ export function JobListing({navigate} : JobListingInterface) {
               frequency_penalty: 0,
               presence_penalty: 0,
             }).then((response) => {
+              console.log(response.data);
               setOutputJobs(response.data);
             });
-            console.log(setOutputJobs);
+            // console.log(setOutputJobs);
           }, 1000);
           return () => {
             clearTimeout(debouncer);
@@ -64,8 +65,7 @@ export function JobListing({navigate} : JobListingInterface) {
                     <Input id="job-listing-input" type="text" onChange={inputHandler}></Input>
                 </FormGroup>
                 </Form>
-
-                <JobList input={inputText} navigator = {navigate}></JobList>
+                <JobList input={inputText} input2={outputJobs} navigator = {navigate}></JobList>
             </CardBody>
             </Card>
         </>

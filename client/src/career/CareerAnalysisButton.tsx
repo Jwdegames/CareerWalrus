@@ -2,6 +2,8 @@ import { count } from "console";
 import PropTypes, { InferProps } from "prop-types";
 import { JobButtonInterface } from "./CABProps"
 import {getArray, getTimeArray, getAvg, getAvgArray, getSlope} from "./BLSStats"
+import Axios from 'axios';
+
 /**
  * Button to fill the career analysis field
  * 
@@ -31,6 +33,9 @@ export function CareerAnalysisButton({title, company, description, cpiData, sala
 
     // Shows a description of the job
     function showDesc() {
+        Axios.post("oneStop/getJobDesc", {
+            
+        })
         updateFunc(getDesc());
     }
     //console.log(cpiData);
