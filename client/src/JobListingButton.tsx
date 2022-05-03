@@ -4,6 +4,7 @@ import { MouseEventHandler } from "react";
 import { NavigateFunction, useNavigate } from "react-router-dom";
 import { Button } from "reactstrap";
 
+
 export function JobListingButton({ title, career, salary, navigator }: JobListingButtonInterface) {
   /**
    * Loads the career analysis elements when this job is pressed.
@@ -19,7 +20,7 @@ export function JobListingButton({ title, career, salary, navigator }: JobListin
       <Button color="primary" onClick={loadCareerAnalysis}>
         <h1>{title}</h1>
         <p>{career}</p>
-        <p>{salary}</p>
+        <p>Median Annual Salary: ${salary}</p>
       </Button>
     </>
   );

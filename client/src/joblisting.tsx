@@ -67,7 +67,7 @@ export function JobListing({ navigate }: JobListingInterface) {
             </FormGroup>
           </Form>
 
-          <JobList input={inputText} navigator={navigate}></JobList>
+          <JobList input={inputText} input2={outputJobs} navigator={navigate}></JobList>
         </CardBody>
       </Card>
     </>
