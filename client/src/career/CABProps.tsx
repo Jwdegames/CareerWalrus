@@ -5,7 +5,6 @@
     title: string,
     company: string,
     description: string,
-    salary: string
     location: string
 }
 
@@ -17,7 +16,6 @@ export interface JobButtonInterface{
     company: string,
     description: string,
     cpiData: any,
-    salary: string,
     location: string,
     blsLocation: string,
     updateFunc: Function;
@@ -32,14 +30,12 @@ export class JobItem implements JobItemInterface {
     title = ""
     company = ""
     description = ""
-    salary = ""
     location = ""
 
-    constructor(t: string, c: string, d: string, s: string, l: string) {
+    constructor(t: string, c: string, d: string, l: string) {
         this.title = t;
         this.company = c;
         this.description = d;
-        this.salary = s;
         this.location = l;
     }
 }

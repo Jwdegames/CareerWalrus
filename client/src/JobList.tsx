@@ -20,7 +20,7 @@ interface JobListInterface {
 export function JobList({input, input2, navigator} : JobListInterface) {
     const [jobCategoryList, setJobCategoryList]: any = useState([]); // State variable for array of job categories
     const [updateComponent, setUpdateComponent] = useState("");
-    var jobCategoryTestList:any = [];
+    var jobCategoryTestList: any = [];
 
     let axiosArray: any[] = []
 
