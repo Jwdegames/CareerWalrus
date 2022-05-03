@@ -15,6 +15,7 @@ export interface JobButtonInterface{
     title: string,
     company: string,
     description: string,
+    wikipedia: string,
     cpiData: any,
     location: string,
     blsLocation: string,

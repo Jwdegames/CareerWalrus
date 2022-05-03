@@ -15,6 +15,8 @@ export function CABList(props: any) {
     const [costOfLiving, setCostOfLiving]: [any, any] = useState([]);
     const [firstLoad, setFirstLoad] = useState(true);
     var jobTestList: any = [];
+    const [wikipediaState, setWikipediaState] = useState("");
+
     
     useEffect(() => {
         if (firstLoad) {
@@ -158,9 +160,53 @@ export function CABList(props: any) {
                     // console.log("The current job is " + JSON.stringify(btn));
                     // console.log("The company of the current job is " + btn.Company);
                     // console.log("Our job list state is a " + typeof(jobListState));
+
+                    // Fetch the Cost of living
+                    //console.log("Requesting wikipedia");
+                    /*
+                    Axios.post("/wikipedia/sendWikipediaRequest", {
+                          search: btn.company})
+                      .then(response => {
+                        console.log(response);
+                        if (response.data.query.pages.hasOwnProperty(-1)) 
+                        {
+                          
+                          console.log("Target company missing from wikipedia");
+                          const callGPT3 = () => {
+                            
+                              Axios.post("/gpt/sendGPTPrompt", {
+                                prompt: "Give me a summary of the company " + btn.company, 
+                                temperature: 0.1,
+                                max_tokens: 256,
+                                top_p: 1,
+                                frequency_penalty: 0,
+                                presence_penalty: 0,
+                              }).then((response) => {
+                                console.log("GPT3 response is " + response.data);
+                                setWikipediaState(response.data);
+                              });
+                          };
+                          
+                          callGPT3();
+              
+              
+              
+                          //setWikipediaState("Invalid Company");
+                          //return "Invalid company";
+                        }
+                        let pages = response.data.query.pages;
+                        let wikiStateKey = Object.keys(pages);
+                        let wikiState = pages[wikiStateKey[0]];
+                        let wikiStateString = JSON.stringify(wikiState.extract);
+                        console.log(wikiStateString);
+                        setWikipediaState(wikiStateString);
+                      })
+                      .catch((err: any) => {
+                          console.log(err);
+                      })*/
                     
-                    // {title: "", description: "", company: "", postDate: "", url: "", location: "", key: ""};
-                    let actualLocation: string =  (btn.location ? btn.location  : "No location provided for job posting");
+
+                    let actualLocation: string =  (btn.Location ? btn.Location  : "No location provided for job posting");
                     
                     let display: string = btn.description;
                     let key: string = btn.key;
@@ -170,6 +216,7 @@ export function CABList(props: any) {
                                 title = {btn.title}
                                 company = {btn.company}
                                 description = {display}
+                                wikipedia = {wikipediaState}
                                 cpiData = {costOfLiving}
                                 location = {actualLocation}
                                 blsLocation = {props.input4}
