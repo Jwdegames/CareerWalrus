@@ -85,9 +85,9 @@ export default function FormBox() {
               <Label for="gpt-input">
                 Give a basic description of your interests to get career options or ask a question. Try to be specific... <br />
                 <b>Examples:</b> <br />
-                "I am a high school student enrolled in multiple advanced placement courses who attends a robotics orgnization after school." <br />
-                "What steps do I need to take to become a mechanical engineer?" <br />
-                You can also choose a pre-selected prompt from the options below. The top option is based on the previously generated response of GPT if you want more information. <br />
+                <i>"I am a high school student enrolled in multiple advanced placement courses who attends a robotics orgnization after school."</i> <br />
+                <i>"What steps do I need to take to become a mechanical engineer?"</i> <br /> <br />
+                You can also choose a pre-selected prompt from the options <b>below</b>. The top option is based on the previously generated response of GPT if you want more information. <br />
               </Label>
               <div className="InputGroup">
                 <Input className="InputArea" id="gpt-input" type="textarea" value={input} onChange={handleChange} onKeyPress={handleKeyPress}></Input>
@@ -134,7 +134,7 @@ export default function FormBox() {
           </CardSubtitle>
           <CardText>{output}</CardText>
         </Card>
-
+        <h1><u>Suggested Prompts</u></h1>
         <QuestionPresets setInput={presetCaller} output={output} />
       </div>
     </div>
