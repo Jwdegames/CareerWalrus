@@ -206,7 +206,7 @@ export function CABList(props: any) {
                       })*/
                     
 
-                    let actualLocation: string =  (btn.Location ? btn.Location  : "No location provided for job posting");
+                    let actualLocation: string =  (btn.location ? btn.location  : "No location provided for job posting");
                     
                     let display: string = btn.description;
                     let key: string = btn.key;

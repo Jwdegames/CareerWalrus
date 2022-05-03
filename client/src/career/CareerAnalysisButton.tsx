@@ -83,10 +83,10 @@ export function CareerAnalysisButton({title, company, description, wikipedia, cp
             <div>
                 <p className="Container" dangerouslySetInnerHTML={{__html: description}}></p>
                 <p>
-                    The latest Consumer Price Index in {blsLocation} is {cpiData[0].value} recorded in {cpiData[0].periodName}, {cpiData[0].year}. 
+                    {/* The latest Consumer Price Index in {blsLocation} is {cpiData[0].value} recorded in {cpiData[0].periodName}, {cpiData[0].year}. 
                     The average CPI is {getAvg(cpiData, 'value').toFixed(3)}.
                     The slope of the CPI as a function of time (in months) is {getSlope(getTimeArray(cpiData, 'year', 'periodName'), getArray(cpiData, 'value').reverse()).toFixed(3)}.
-                    This means that the CPI changes by about {getSlope(getTimeArray(cpiData, 'year', 'periodName'), getArray(cpiData, 'value').reverse()).toFixed(3)} every month on average.
+                    This means that the CPI changes by about {getSlope(getTimeArray(cpiData, 'year', 'periodName'), getArray(cpiData, 'value').reverse()).toFixed(3)} every month on average. */}
                     <br>
                     </br>
                     <br></br>
