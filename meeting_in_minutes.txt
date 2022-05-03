@@ -1,0 +1,8 @@
+Meeting 1:
+The meeting was to discuss the finishing touches on Sprint 2 and give a status update since the last meeting. They discussed the accomplishments, which were that the website was working on Heroku, question presets were done, they started training GPT3 to refine output, and they finished the front and back end for job listings. They also discussed the plans, which were to finish Sprint 2 and demonstrate the website in a user study. Finally, they assigned tasks to use the backend to reduce queries to the API to Paul, finish training GPT3 to fine tune answers to Amari, and integrate GPT3 to give career categories based on the user description to Paul and Amari and Jacob.
+
+Meeting 2:
+The team discussed progress so far on getting Sprint 3 started including important features such as getting company information, stylizing the website, and getting more career data. Jacob was able to get important quality of life information to the job listings with the BLS API. William started making progress on making the Q&A more intuitive to use. The team ended with plans for training GPT3 to give better results and connecting it to the job listings. 
+
+Meeting 3:
+The team made a lot of progress on meeting its goal. Jacob was able to get the team extra credit by implementing a magnifying glass feature. Amari made it possible to get specific job information on the job listings. William made more progress on making the question presets more intuitive. Paul is making progress on integrating GPT3 into job listings in collaboration with Amari.  Items left are the company information, and the color contrast styling. The team concluded with a determination to finish the remaining tasks.
