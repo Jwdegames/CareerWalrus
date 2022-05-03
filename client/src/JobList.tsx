@@ -27,7 +27,7 @@ export function JobList({input, input2, navigator} : JobListInterface) {
     useEffect(() => {
         
         let myFunc = async () => {
-            if (input2 === null) {
+            if (!input2) {
                 console.log("Empty list of potential jobs for candidate")
             } else {
                 console.log("Input was changed");
@@ -51,22 +51,7 @@ export function JobList({input, input2, navigator} : JobListInterface) {
                     newObj.salary = response.data.OccupationDetail.Wages.NationalWagesList[1].RateType == "Annual" ? response.data.OccupationDetail.Wages.NationalWagesList[1].Median : response.data.OccupationDetail.Wages.NationalWagesList[0].Median; // Annual median wage
                     console.log(newObj);
                     jobCategoryTestList.push(newObj);
-
-                        
-                    // // axiosArray.push(axiosPromise)
-                    // .then(response => {
-                    //     // console.log(response.data);
-                    //     // console.log(response.data.OccupationDetail);
-                    //     // console.log(response.data.OccupationDetail.SocInfo[0].SocDescription);
-                    //     // return `{career: jobCategoryName, description: ${response.data.OccupationDetail.SocInfo[0].SocDescription}, salary: ${response.data.OccupationDetail.}}`;
-                        
-                        
-                    // }).catch((err: any) => {
-                    //     console.log(`Error ${err} when calling getSalary for jobCategoryName`);
-                    // })
-                };
-                // const responsesAxios = await Promise.all(axiosArray)
-
+                }
 
                 console.log(jobCategoryTestList);
                 setJobCategoryList(jobCategoryTestList);

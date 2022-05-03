@@ -47,8 +47,26 @@ export function CABList(props: any) {
             console.log(err);
         })
 
+        let myFunc = async () => {
+            for (let job of jobListState) {
+                console.log(job);
+                // // Get salary information for job category from OneStop
+                // const response = await Axios.post("/oneStop/getJobDesc", {
+                //     searchID: job.
+                // })
+
+                // var newObj = {career: "", description: "", salary: ""};
+                // newObj.career = jobCategoryName;
+                // newObj.description = response.data.OccupationDetail.SocInfo[0].SocDescription;
+                // newObj.salary = response.data.OccupationDetail.Wages.NationalWagesList[1].RateType == "Annual" ? response.data.OccupationDetail.Wages.NationalWagesList[1].Median : response.data.OccupationDetail.Wages.NationalWagesList[0].Median; // Annual median wage
+                // console.log(newObj);
+                // jobCategoryTestList.push(newObj);
+            }
+        }
         
     }, []);
+
+
 
     // Comment this out to disable the testing
     let index = 0;
