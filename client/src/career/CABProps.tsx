@@ -18,8 +18,8 @@ export interface JobButtonInterface{
     cpiData: any,
     location: string,
     blsLocation: string,
-    updateFunc: Function;
-    
+    updateFunc: Function,
+    postDate: string;
 }
 
 /**

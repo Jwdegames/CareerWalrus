@@ -174,6 +174,7 @@ export function CABList(props: any) {
                                 location = {actualLocation}
                                 blsLocation = {props.input4}
                                 updateFunc = {props.input as Function}
+                                postDate = {btn.postDate}
                             />
                     );
                 })

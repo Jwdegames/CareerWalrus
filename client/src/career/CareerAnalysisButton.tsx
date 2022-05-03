@@ -11,7 +11,7 @@ import "./Career.css";
  * @returns A button that fills in the career analysis field.
  */
 
-export function CareerAnalysisButton({title, company, description, cpiData, location, blsLocation, updateFunc} : JobButtonInterface) {
+export function CareerAnalysisButton({title, company, description, cpiData, location, blsLocation, updateFunc, postDate} : JobButtonInterface) {
 
     /**
      * Generates the description
@@ -46,6 +46,7 @@ export function CareerAnalysisButton({title, company, description, cpiData, loca
         <h3>{title}</h3>
         <p>{company}</p>
         <p>{location}</p>
+        <p>Date Posted: {postDate}</p>
       </Button>
     </>
   );
