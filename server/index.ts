@@ -44,6 +44,9 @@ app.use("/oneStop", oneStopRequests);
 const blsRequests = require("./routes/BLS.ts");
 app.use("/bls", blsRequests);
 
+const wikipediaRequests = require("./routes/Wikipedia.ts");
+app.use("/wikipedia", wikipediaRequests);
+
 // All other GET requests not handled before will return our React app
 app.get('*', (req: any, res: any) => {
     res.sendFile(path.join(__dirname + "/../client/build/index.html"));
