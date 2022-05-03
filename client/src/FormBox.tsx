@@ -1,7 +1,8 @@
-import { Button, Form, FormGroup, Label, Input, Card, CardBody, CardText } from "reactstrap";
+import { Button, Form, FormGroup, Label, Input, Card, CardBody, CardText, CardTitle, Spinner, CardSubtitle } from "reactstrap";
 import React, { useEffect, useState } from "react";
 import Axios from "axios";
 import { QuestionPresets } from "./question-presets/presets";
+import "./FormBox.css";
 
 export default function FormBox() {
   const [output, setOutput] = useState("");
@@ -12,6 +13,8 @@ export default function FormBox() {
   const [redditButtonColor, setRedditButtonColor] = useState("link");
   const [redditButtonText, setRedditButtonText] = useState("Click Me!");
 
+  const [spinnerHidden, hideSpinner] = useState(true); // hide spinner initial b/c not load anything
+
   // Calls new GPT3 API request only when gpt3Input changes
   // idk? I called yarn dev. I can redo it. that makes sense
 
@@ -20,6 +23,7 @@ export default function FormBox() {
       "Use the following summary of an individual's interests to generate a list of comma-seperated engineering jobs that fits their professional and academic profile. Try to return engineering related careers. If the user enters a career related question, answer it.\n \n User Input: ";
     if (GPT3Cache) {
       console.log(gptCallAddr); // this thing is printing empty string
+      hideSpinner(false);
       Axios.post(gptCallAddr, {
         prompt: inputprompt + GPT3Cache + "/n",
         temperature: 0.1,
@@ -29,6 +33,7 @@ export default function FormBox() {
         presence_penalty: 0,
       }).then((response) => {
         setOutput(response.data);
+        hideSpinner(true);
       });
     }
   };
@@ -72,31 +77,66 @@ export default function FormBox() {
   };
 
   return (
-    <div className="p-3 my-8 rounded">
-      <Card style={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
+    <div className="QNAContainer">
+      <Card className="InputFormArea" style={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
         <CardBody>
           <Form>
             <FormGroup>
               <Label for="gpt-input">
                 Give a basic description of your interests to get career options or ask a question. Try to be specific... <br />
-                Examples: <br />
-                "I am a high school student enrolled in multiple advanced placement courses who attends a robotics orgnization after school." <br />
-                "What steps do I need to take to become a mechanical engineer?" <br />
-                You can also choose a pre-selected prompt from the options below. The top option is based on the previously generated response of GPT if you want more information. <br />
+                <b>Examples:</b> <br />
+                <i>"I am a high school student enrolled in multiple advanced placement courses who attends a robotics orgnization after school."</i> <br />
+                <i>"What steps do I need to take to become a mechanical engineer?"</i> <br /> <br />
+                You can also choose a pre-selected prompt from the options <b>below</b>. The top option is based on the previously generated response of GPT if you want more information. <br />
               </Label>
-              <br />
-              <Input id="gpt-input" type="textarea" value={input} onChange={handleChange} onKeyPress={handleKeyPress}></Input>
+              <div className="InputGroup">
+                <Input className="InputArea" id="gpt-input" type="textarea" value={input} onChange={handleChange} onKeyPress={handleKeyPress}></Input>
+                <Button className="RedditBtn" onClick={handleModeChange} color={redditButtonColor}>
+                  {redditButtonText}
+                </Button>
+              </div>
+              <Button
+                className="EnterButton"
+                color="primary"
+                size="sm"
+                onClick={(e: any) => {
+                  e.preventDefault();
+                  setGPT3Cache(input);
+                }}
+              >
+                Enter
+              </Button>
             </FormGroup>
+            <FormGroup></FormGroup>
           </Form>
-          <button onClick={() => setGPT3Cache(input)}>Enter</button>
-          <Button onClick={handleModeChange} color={redditButtonColor}>
-            {" "}
-            {redditButtonText}{" "}
-          </Button>
         </CardBody>
       </Card>
-      <p> {output} </p>
-      <QuestionPresets setInput={presetCaller} output={output} />
+
+      <div className="OutputArea">
+        <Card
+          className="OutputBox"
+          body
+          inverse
+          style={{
+            backgroundColor: "#333",
+            borderColor: "#333",
+          }}
+        >
+          <CardTitle>
+            <b>Response:</b>
+          </CardTitle>
+          <CardSubtitle>
+            {spinnerHidden ? null : (
+              <Spinner color="primary" size="">
+                Loading...
+              </Spinner>
+            )}
+          </CardSubtitle>
+          <CardText>{output}</CardText>
+        </Card>
+        <h1><u>Suggested Prompts</u></h1>
+        <QuestionPresets setInput={presetCaller} output={output} />
+      </div>
     </div>
   );
 }

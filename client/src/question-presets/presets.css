@@ -7,8 +7,29 @@
 }
 
 .Question {
+  margin: 0.3em; 
   padding: 0.3em;
-  margin: 0.3em;
 }
 
-/* flex-basis: 0; */
+.static-question {
+  height: 5em;
+  width: 15em;
+}
+
+@keyframes fadeIt {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.DynamicQuestion.animate {
+  animation: fadeIt 0.5s ease-in-out;
+}
+
+.DynamicQuestion {
+  height: 5em;
+  width: 15em;
+}

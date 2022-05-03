@@ -1,51 +1,40 @@
 import React, { PropsWithChildren, useEffect } from "react";
-import {
-  Navbar,
-  Nav,
-  NavItem,
-  NavbarBrand,
-  Collapse,
-  NavLink,
-  Button
-} from "reactstrap";
+import { Navbar, Nav, NavItem, NavbarBrand, Collapse, NavLink, Button } from "reactstrap";
 import "./navbar.css";
 
 interface MyNavbarInterface {
-  magnified: boolean
-  setMagnified: Function
-  fake: boolean
+  magnified: boolean;
+  setMagnified: Function;
+  fake: boolean;
   Translate: React.RefObject<HTMLDivElement>;
 }
 
-
 function Translation() {
-  var translation = document.querySelector('#google_translate_element');
+  var translation = document.querySelector("#google_translate_element");
   if (translation == null) return;
   console.log("Translation element is " + translation);
   var transClone = translation?.cloneNode(true)!;
   if (transClone == null) return;
   console.log("Made clone");
 
-  var nextTranslation = document.querySelector('#translation_true');
+  var nextTranslation = document.querySelector("#translation_true");
   if (nextTranslation == null) return;
   console.log("Got fake element");
-  nextTranslation!.innerHTML = '';
+  nextTranslation!.innerHTML = "";
   nextTranslation!.appendChild(transClone);
   console.log("Translation element transfer complete");
 
-    // Get the fake translation element
-    let translates = document.getElementsByClassName("goog-te-combo");
-    let fakeTranslate: any = translates[1];
-    if (fakeTranslate == null) {
-      console.log("Failed to initialize translate - fake translation element is null");
-      return;
-    }
-    fakeTranslate.addEventListener('change', (event: any) => {
-      console.log("Fake Translate changed");
-      updateTranslate();
-    });
-
-  
+  // Get the fake translation element
+  let translates = document.getElementsByClassName("goog-te-combo");
+  let fakeTranslate: any = translates[1];
+  if (fakeTranslate == null) {
+    console.log("Failed to initialize translate - fake translation element is null");
+    return;
+  }
+  fakeTranslate.addEventListener("change", (event: any) => {
+    console.log("Fake Translate changed");
+    updateTranslate();
+  });
 }
 
 function updateTranslate() {
@@ -63,19 +52,18 @@ function updateTranslate() {
     return;
   }
   mainTranslate.value = fakeTranslate.value;
-  mainTranslate!.dispatchEvent(new Event('change'));
-
+  mainTranslate!.dispatchEvent(new Event("change"));
 }
 
-export function MyNavbarBasic({magnified, setMagnified, fake, Translate} : MyNavbarInterface) {
+export function MyNavbarBasic({ magnified, setMagnified, fake, Translate }: MyNavbarInterface) {
   useEffect(() => {
-    setTimeout(function() {
+    setTimeout(function () {
       console.log("Translating");
       Translation();
-    }, 3000)
+    }, 3000);
   }, []);
   //console.log("Reloading with magnified: " + magnified);
-  function toggleMagnified(e : React.MouseEvent) {
+  function toggleMagnified(e: React.MouseEvent) {
     //console.log("Modifiying: " + setMagnified);
     magnified = !magnified;
     if (fake) {
@@ -92,23 +80,19 @@ export function MyNavbarBasic({magnified, setMagnified, fake, Translate} : MyNav
         <Collapse navbar>
           <Nav className="ml-auto" navbar>
             <NavItem>
-              <NavLink href="/jobs">
-                Job Listing
-                </NavLink>
-              </NavItem>
+              <NavLink href="/jobs">Job Listing</NavLink>
+            </NavItem>
             <NavItem>
-              <NavLink href="/question-and-answer">
-                Question and Answer
-              </NavLink>
+              <NavLink href="/question-and-answer">Question and Answer</NavLink>
             </NavItem>
             <NavItem>
               <div id="google_translate_element"></div>
-              {
-                fake ? (<div id ={"translation_"+fake}></div>) : (<></>)
-              }
+              {fake ? <div id={"translation_" + fake}></div> : <></>}
             </NavItem>
             <NavItem>
-              <Button onClick = {toggleMagnified}>Toggle Magnifier</Button>
+              <Button className="MagnifyButton" onClick={toggleMagnified}>
+                Toggle Magnifier
+              </Button>
             </NavItem>
           </Nav>
         </Collapse>
@@ -121,8 +105,8 @@ export class MyNavbar extends React.Component<MyNavbarInterface> {
   magnified: boolean;
   setMagnified: Function;
   fake: boolean;
-  Translate: React.RefObject<HTMLDivElement>
-  Navbar? : any;
+  Translate: React.RefObject<HTMLDivElement>;
+  Navbar?: any;
 
   constructor(props: MyNavbarInterface) {
     super(props);
@@ -133,7 +117,7 @@ export class MyNavbar extends React.Component<MyNavbarInterface> {
   }
 
   makeNavbar() {
-    return <MyNavbarBasic magnified = {this.magnified} setMagnified = {this.setMagnified} fake = {this.fake} Translate = {this.Translate}/>
+    return <MyNavbarBasic magnified={this.magnified} setMagnified={this.setMagnified} fake={this.fake} Translate={this.Translate} />;
   }
 
   assignNavbar() {

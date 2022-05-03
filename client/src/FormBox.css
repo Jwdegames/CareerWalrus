@@ -1,0 +1,49 @@
+.QNAContainer {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.InputFormArea {
+  background-color: #0dcaf0;
+  color: black;
+  border-color: #6c757d;
+  width: 90%;
+}
+
+.InputGroup {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  background-color: white;
+}
+
+.EnterButton {
+  width: 200px;
+  height: 50px;
+}
+
+.InputArea {
+  height: 200px;
+}
+
+.RedditBtn {
+  width: 20%;
+  border-color: black;
+}
+
+.OutputArea {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  /* justify-content: center; */
+  align-items: center;
+  align-content: space-around;
+}
+
+.OutputBox {
+  width: 90%;
+  margin-bottom: 25px;
+  margin-top: 25px;
+}
