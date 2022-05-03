@@ -11,7 +11,7 @@ import "./Career.css";
  * @returns A button that fills in the career analysis field.
  */
 
-export function CareerAnalysisButton({title, company, description, cpiData, salary, location, blsLocation, updateFunc} : JobButtonInterface) {
+export function CareerAnalysisButton({title, company, description, cpiData, location, blsLocation, updateFunc} : JobButtonInterface) {
 
     /**
      * Generates the description
@@ -19,9 +19,7 @@ export function CareerAnalysisButton({title, company, description, cpiData, sala
     function getDesc() {
         return (
             <div>
-                <p>
-                    {description}
-                </p>
+                <div className="Container" dangerouslySetInnerHTML={{__html: description}}></div>
                 <p>
                     The latest Consumer Price Index in {blsLocation} is {cpiData[0].value} recorded in {cpiData[0].periodName}, {cpiData[0].year}. 
                     The average CPI is {getAvg(cpiData, 'value').toFixed(3)}.
@@ -47,7 +45,6 @@ export function CareerAnalysisButton({title, company, description, cpiData, sala
       <Button color="info" outline className="JobButton" onClick={showDesc}>
         <h3>{title}</h3>
         <p>{company}</p>
-        <p>{salary}</p>
         <p>{location}</p>
       </Button>
     </>

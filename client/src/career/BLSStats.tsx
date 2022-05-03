@@ -91,8 +91,8 @@
         let slope = 0;
         let xAvg = getAvgArray(xArray);
         let yAvg = getAvgArray(yArray);
-        console.log("xArray: " + xArray);
-        console.log("yArray: " + yArray);
+        // console.log("xArray: " + xArray);
+        // console.log("yArray: " + yArray);
         let numerator = 0;
         let denominator = 0;
         for (let i = 0; i < xArray.length && i < yArray.length; i++) {
